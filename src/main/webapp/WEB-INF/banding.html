@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org"/>
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+		<div class="modal-dialog" style="width: 780px">
+			<div class="modal-content">
+				<div class="modal-header">
+					<!-- <button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button> -->
+					<h4 class="modal-title" id="myModalLabel">填写手机号进行绑定</h4>
+				</div>
+				<div class="modal-body">
+					<div class="panel-body">
+						<form id="address-form" class="form-horizontal" role="form">
+							<div class="form-group" style="margin-left: 50px">
+								<label class="col-md-2 control-label"><span
+									style="color: red;"></span>手机号：</label>
+								<div class="col-md-5">
+									<input name="recvPhone" id="loginMobile" type="text" class="form-control"
+										placeholder="请输入手机号" onblur="phoneReg(this)"/>
+								</div>
+							</div>
+							<div class="form-group" style="margin-left: 50px">
+								<label class="col-md-2 control-label">验证码：</label>
+								<div class="col-md-5" id="codeinfo">
+									<input name="recvPhone" type="text" id="loginCode" class="form-control"
+										placeholder="验证码"/>
+									<button type="button" class="btn btn-link" id="code" 
+										style="position: relative;left: 255px;bottom: 34px" onclick="getCode(this)">获取验证码</button>
+								</div>
+								<div class="col-md-3">
+									<input name="unionid" id="unionid" type="hidden" class="form-control" th:value="${unionid}"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-10" style="margin-left: 250px">
+									<button type="button" class="btn" id="loginNewBtn" style="margin-left: 50px">绑定并登陆</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+<script src="../js/bangding.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.ideasStudio.website.mapper.ContactUsMapper">
+		<!-- /**
+			 * 用户插入一条留言的方法
+			 * @param message
+			 * @return
+			 */
+		Integer insertLeaveMessage(LeaveMessage message); -->
+	<insert id="insertLeaveMessage"
+	useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO 
+			leavemessage(
+				name,
+				phone,
+				email,
+				messageType,
+				messageEntity,
+				createName,
+				createTime
+			)
+			VALUES(
+				#{name},
+				#{phone},
+				#{email},
+				#{messageType},
+				#{messageEntity},
+				#{createName},
+				#{createTime}
+			)
+	</insert>
+	
+	<!-- /**
+	 * 更新数据库中留言表状态，是否已经发送邮件
+	 * @param id	被更改的id
+	 * @param isSend	是否发送状态码 true为已经发送成功，
+	 * @return	返回受影响的行数
+ Integer updateIsSendEmail(@Param("id")Integer id,@Param("SendEmail")boolean isSend);-->
+	
+	<update id="updateIsSendEmail">
+		UPDATE 
+			leavemessage 
+		SET
+			 SendEmail = #{SendEmail}
+ 		where 
+ 			id = #{id};
+	</update>
+</mapper>

@@ -1,0 +1,179 @@
+.WallArtPicture{
+    position: relative;
+}
+.crosswise-tab ul{
+    position: absolute;
+    top: 0px;
+    left: -120px;
+}
+.crosswise-tab li{
+  display: block;
+}
+
+
+
+.productimg:hover{
+    opacity:0.2;
+    position: absolute;
+    top:0px;
+    z-index: 10;
+}
+
+.describe{
+   margin: 5rem auto;
+}
+
+
+
+
+.carousel-indicators li{
+    border-radius: 0px;
+}
+
+.brandstory-index{
+   width: 100%;
+    height: auto;
+    padding: 2rem 2rem;
+}
+
+.brandstory-index .text{
+    font-family: 方正细等线简体;
+    font-size: 1.8rem;
+}
+
+.brandstory-index .text span{
+    font-family: Alegreya SC;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.modernarts-index{
+    width: 100%;
+    height:auto;
+    background-color: #f5f5f5;
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.wallmural-index {
+    width: 100%;
+    height: auto;
+    background-color: #f5f5f5;
+    padding-top: 10%;
+}
+.moder-wall h1{
+    font-family: '庞门正道标题体';
+    font-weight: bold;
+    display: inline-block;
+}
+
+.moder-wall .subheading{
+    font-family: Alegreya SC;
+    font-size: 2.5rem;
+    border: 2px solid #436684;
+    font-weight: bold;
+    padding-top: 1%;
+}
+
+
+.moder-wall .text{
+    margin-top: 6%;
+    font-family: 方正细等线简体;
+    font-size: 1.9rem;
+    line-height: 1.8rem;
+}
+
+.bgcolor{
+    width: 50%;
+    height: 50%;
+    min-width: 22rem;
+    min-height: 22rem;
+    overflow: visible;
+    display: inline-block;
+    position: relative;
+
+}
+
+#sofa{
+    position: relative;
+    top: -6rem;
+    left: -5rem;
+}
+#forset{
+    box-shadow: 0 0 20px rgba(35, 53, 53, 0.96);
+}
+
+.gray{
+    background-color: #c1c7d4;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    vertical-align: text-top;
+}
+
+.gray>img{
+    margin-left: 20%;
+    margin-top: 20%;
+}
+
+.img{
+    width: 48%;
+    display: inline-block;
+    padding-left: 5%;
+    vertical-align: text-top;
+}
+.btn{
+    margin-bottom: 2rem;
+}
+.txt{
+    width: 48%;
+    height:100%;
+    display: inline-block;
+    padding-left: 5%;
+    vertical-align: text-top;
+    margin-top: 8%;
+}
+.wallmural-index .txt{
+    margin-top: 2%;
+}
+
+@media only screen and (max-width: 767px) and (min-width: 0px){
+    .img,.txt{
+        display: block;
+        width: 100%;
+    }
+    .brandstory-index .text{
+        font-size: 1.3rem;
+    }
+    .brandstory-index .text span{
+        font-size: 1.1rem;
+    }
+
+    .moder-wall .subheading{
+        font-family: Alegreya SC;
+        font-size: 1.3rem;
+        border: 2px solid #436684;
+        font-weight: bold;
+        padding-top: 1%;
+    }
+
+
+    .moder-wall .text{
+        margin-top: 6%;
+        font-family: 方正细等线简体;
+        font-size: 1.3rem;
+        line-height: 1.3rem;
+    }
+}
+
+@media only screen and (max-width: 2560px) and (min-width: 768px){
+    .img,.txt{
+        display: inline-block;
+    }
+}
+
+@media only screen and (max-width: 2560px) and (min-width: 801px){
+}
+
+
+

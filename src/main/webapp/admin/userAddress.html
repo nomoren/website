@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="./css/font.css">
+<link rel="stylesheet" href="./css/xadmin.css">
+<script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="./js/xadmin.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+		<div class="modal-dialog" style="width: 780px">
+			<div class="modal-content">
+				<div class="modal-header">
+				</div>
+				<div class="modal-body">
+					<div class="panel-body">
+						<form id="address-form" class="form-horizontal" role="form">
+							<div class="form-group">
+								<label class="col-md-2 control-label"><span
+									style="color: red;">*</span>订单编号：</label>
+								<div class="col-md-8">
+									<input id="orderNo" type="text" class="form-control"
+										placeholder="订单号" readonly="readonly">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-2 control-label"><span
+									style="color: red;">*</span>收货人：</label>
+								<div class="col-md-8">
+									<input id="recvName" type="text" class="form-control"
+										placeholder="收货人姓名" readonly="readonly">
+								</div>
+							</div>
+							<div class="address_content" data-toggle="distpicker">
+								<div class="form-group">
+									<label class="col-md-2 control-label"><span
+										style="color: red;">*</span>省市区：</label>
+									<div class="col-md-3">
+										<input id="recvProvince" type="text" class="form-control"
+										placeholder="省市区" style="width: 300px" readonly="readonly">
+									</div>
+								</div>
+								<div class="form-group">
+								<label class="col-md-2 control-label"><span
+									style="color: red;">*</span>详细地址：</label>
+								<div class="col-md-8">
+									<textarea id="recvAddress" class="form-control" rows="3"
+										placeholder="小区名称、门牌号等" readonly="readonly"></textarea>
+								</div>
+							</div>
+								<div class="form-group ">
+									<label class="col-md-2 control-label">邮政编码：</label>
+									<div class="col-md-3">
+										<input id="recvZip" type="text" class="form-control"
+											placeholder="邮政编码" readonly="readonly">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-2 control-label"><span
+									style="color: red;">*</span>手机：</label>
+								<div class="col-md-3">
+									<input id="recvPhone" type="text" class="form-control"
+										placeholder="手机号码" readonly="readonly">
+								</div>
+								<label class="col-md-2 control-label">固话：</label>
+								<div class="col-md-3">
+									<input id="recvTel" type="text" class="form-control"
+										placeholder="固定电话号码" readonly="readonly">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-2 control-label"><span
+									style="color: red;"></span>礼品卡内容：</label>
+								<div class="col-md-8">
+									<textarea id="giftCard" class="form-control" rows="3"
+										placeholder="" readonly="readonly"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+							<label class="col-md-2 control-label"><span
+									style="color: red;"></span>资源下载：</label>
+								<div class="col-md-3">
+									<a title="下载资源"  onclick="downloadFile($('#orderNo').val())">
+									<i class="iconfont">&#xe714;点击下载私人订制资源</i></a>
+								</div>
+								<div class="col-md-3">
+									<a title="下载资源"  onclick="downloade()">
+									<i class="iconfont">&#xe714;点击下载套装商品资源</i></a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+		//获取url参数
+		(function ($) {
+			$.getUrlParam = function (name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if (r != null) return unescape(r[2]); return null;
+				}
+			})(jQuery);
+		
+			//显示详细收货信息
+			$(document).ready(function(){
+				var id=$.getUrlParam("id");
+				var url="../admin/getOrderInfo.do";
+				var data="id="+id;
+				$.ajax({
+					"url":url,
+					"data":data,
+					"type":"POST",
+					"dataType":"JSON",
+					"success":function(json){
+						var order=json.data;
+						$("#orderNo").val(order.orderNo);
+						
+						$("#recvName").val(order.recvName);
+						$("#recvProvince").val(order.recvDistrict);
+						$("#recvAddress").val(order.recvAddress);
+						$("#recvZip").val(order.recvZip);
+						$("#recvPhone").val(order.recvPhone);
+						$("#recvTel").val(order.recvTel);
+						$("#giftCard").text(order.giftCard);
+					}
+				});
+			});
+			
+			function downloadFile(orderNo){
+				var actionURL = "../cust/download.do?orderNo="+orderNo;
+				var form = $("<form></form>");   
+				$('body').append(form);  
+			        form.attr('style','display:none');   
+			        form.attr('target','');
+			        form.attr('method','post');
+			        form.attr('action',actionURL);//下载文件的请求路径		        
+			        form.submit();    
+				}; 
+				
+				function downloade(){
+					var id=$.getUrlParam("id");
+					var url="../order/download.do?orderId="+id;
+					var form = $("<form id='a'></form>");   
+					$('body').append(form);  
+				        form.attr('style','display:none');   
+				        form.attr('target','');
+				        form.attr('method','post');
+				        form.attr('action',url);//下载文件的请求路径		        
+				        form.submit();    
+					};
+					
+					
+				
+		</script>
+</body>
+</html>

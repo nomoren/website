@@ -1,0 +1,123 @@
+.main{
+    font-family: 方正细等线简体;
+    position: static;
+    overflow: hidden;
+}
+
+
+.qu{
+ /*   position: relative;*/
+    background-color: #ECEDEF;
+}
+
+.ld{
+    padding: 0px;
+    margin-left: 60px;
+    /*border-top: 3px solid black;*/
+   /* width: 150px;*/
+    width: 100%;
+    text-align: left;
+    font-size: 20px;
+    display: block;
+    vertical-align: top;
+    position: absolute;
+    left: 0px;
+    valign:top;
+
+
+}
+
+.endrd{
+    margin-bottom: 60px;
+}
+.endrr{
+    padding-bottom: 0.4em;
+    border-bottom: 1px solid black;
+}
+
+.rd{
+    padding: 0px;
+    text-align: left;
+    font-size: 14px;
+    width: 75%;
+    /*margin-left: 200px;*/
+    display: inline-block;
+    vertical-align: top;
+    valign:top;
+}
+
+.rr{
+    border-top: 1px solid black;
+    padding-top: 10px;
+    text-align: left;
+    float: right;
+    margin: 3px;
+    valign:top;
+    color: #57595b;
+    line-height: 2.0em;
+}
+
+.rs{
+    font-size: 1.0em;
+    float: right;
+    cursor: pointer;
+}
+
+.rr div span{
+    display: none;
+}
+
+.ques:hover{
+    cursor: pointer;
+}
+
+.ques{
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.faqtitle{
+    font-size: 2.7rem;
+    color: #57595b;
+}
+@media only screen and (max-width: 900px) and (min-width: 0px){
+    .faq{
+        display: block;
+    }
+    .leftup{
+        display: none;
+    }
+    .main{
+        margin-left: 0;
+    }
+    .qu{
+        padding: 0;
+        margin: 0;
+    }
+
+}
+
+@media only screen and (min-width: 901px) and (max-width:2560px) {
+    .faq{
+        display: none;
+    }
+    .leftup{
+        display: block;
+        position: absolute;
+        width: 22em;
+        height: 22em;
+        background-color: rgba(198,204,218,0.7);
+    }
+    .main{
+        margin-left: 5em;
+    }
+    .qu{
+        margin:12.5rem 3rem 0 13rem;
+        padding-top: 25px;
+        width: 100%;
+    }
+
+}
+
+
+

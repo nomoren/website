@@ -1,0 +1,276 @@
+
+.left,.right{
+   width: 48%;
+   height:auto;
+   display: inline-block;
+   vertical-align: middle;
+   overflow: visible;
+   margin: 2.5% 0;
+   padding: 5%;
+}
+i{
+   font-style: italic;
+}
+
+/*--------------------第一个part---------------------*/
+.start-introduce{
+   background: url("../images/brandStory/top-background.png") no-repeat top center;
+   background-size: 100%;
+   width: 100%;
+   height: auto;
+   font-family: 方正细等线简体;
+}
+
+.start-introduce img{
+   margin-top: 10%;
+   margin-left: 20%;
+}
+.start-introduce p{
+   margin-left: 5%;
+   margin-top:3%
+}
+.start-introduce span{
+   font-size: 2.5rem;
+   font-weight: bold;
+}
+.start-introduce p{
+   font-size: 2.0rem;
+
+}
+@media only screen and (max-width: 767px) and (min-width: 0px) {
+   .start-introduce img {
+      margin-top: 5%;
+      margin-left: 1%;
+   }
+
+   .start-introduce p {
+      margin-left: 2.5%;
+      margin-top: 1.5%
+   }
+
+   .start-introduce span {
+      font-size: 1.25rem;
+      font-weight: bold;
+   }
+
+   .start-introduce p {
+      font-size: 1.0rem;
+
+   }
+   .left,.right{
+      margin: 2% 0;
+      padding: 2%;
+   }
+}
+@media only screen and (max-width: 2560px) and (min-width: 768px){
+
+}
+
+/*------------------------第二个part----------------------------*/
+.brand-introduce{
+   font-family: 方正细等线简体;
+   position: relative;
+   overflow: visible;
+}
+.brand-introduce span{
+   font-family: "Alegreya SC";
+   font-size: 2.5rem;
+   font-weight: bold;
+}
+.brand-introduce p{
+   font-size: 1.8rem;
+}
+
+.brand-introduce .title-font{
+   position: absolute;
+   font-family: "Minion Pro SmBd Capt";
+   top: 2.5%;
+   z-index: 1;
+   margin-left: 10%;
+}
+.brand-introduce .title-font span{
+   font-family: "Minion Pro";
+   font-weight: normal;
+   margin-top: 10%;
+   font-size: 10vw;
+   color: #d6d6d6;
+}
+.bigbackground{
+   height: 50rem;
+   width: 68%;
+   background-color: #c6ccd9;
+   margin-left: 5%;
+   z-index: -30;
+}
+.bigbackground img{
+   margin-left: 30%;
+   margin-top: 28%;
+}
+
+
+.brand-introduce .brand-text{
+   margin:5%;
+   position: relative;
+   width: 100%;
+   z-index: 30;
+}
+
+.brand-introduce .right,.brand-introduce .left{
+   vertical-align: middle;
+}
+
+@media only screen and (max-width: 767px) and (min-width: 0px) {
+   .brand-introduce span{
+      font-size: 1.25rem;
+   }
+   .brand-introduce p{
+      font-size: 0.9rem;
+   }
+   .brand-introduce .title-font{
+      top: 1.25%;
+      margin-left: 5%;
+   }
+   .brand-introduce .title-font span{
+      margin-top: 5%;
+      font-size: 10vw;
+   }
+   .bigbackground{
+      height: 26rem;
+      width: 80%;
+      background-color: #c6ccd9;
+      margin-left: 2.5%;
+      z-index: -30;
+   }
+   .bigbackground img{
+      margin-left: 40%;
+      margin-top: 30%;
+   }
+   .brand-introduce .brand-text{
+      margin-left: 5%;
+      z-index: 30;
+   }
+
+   .brand-introduce .right{
+      float: left;
+      vertical-align: middle;
+   }
+   .brand-introduce .left{
+      float: left;
+      vertical-align: middle;
+   }
+
+}
+
+/*-----------------------第三个part---------------------------------*/
+.feature-1{
+   clear: both;
+   font-family: 方正细等线简体;
+}
+
+.feature-1 .title-font{
+   font-family: "Minion Pro";
+   font-size: 3rem;
+   font-style: italic;
+   margin-left: 20%;
+}
+
+.feature-1 h1{
+   font-family: 庞门正道标题体;
+   font-size: 3rem;
+   font-weight: bold;
+}
+.feature-1 p{
+   font-family: 方正细等线简体;
+   font-size: 2.2rem;
+}
+
+.welt{
+   position: relative;
+   left: 5rem;
+}
+@media only screen and (max-width: 767px) and (min-width: 0px) {
+
+   .feature-1 .title-font{
+      font-size: 1.5rem;
+      margin-left:10%;
+      margin-top: 70%;
+   }
+
+   .feature-1 h1{
+      font-size: 1.5rem;
+   }
+   .feature-1 p{
+      font-size: 1.1rem;
+   }
+
+   .welt{
+      left: 2.5rem;
+   }
+}
+
+/*------------------------第四个part-------------------------------------------*/
+.feature-2{
+   font-family: 方正细等线简体;
+}
+
+.feature-2 .title-font{
+   font-family: "Minion Pro";
+   font-size: 3rem;
+}
+
+.feature-2 h1{
+   font-family: 庞门正道标题体;
+   font-size: 3rem;
+   font-weight: bold;
+}
+.feature-2 p{
+   font-family: 方正细等线简体;
+   font-size: 2.2rem;
+}
+@media only screen and (max-width: 767px) and (min-width: 0px) {
+
+   .feature-2 .title-font{
+      font-size: 1.5rem;
+      margin-left: 15%;
+   }
+
+   .feature-2 h1{
+      font-size: 1.5rem;
+   }
+   .feature-2 p{
+      font-size: 1.1rem;
+   }
+}
+/*------------------------第五个part----------------------------------------------------*/
+.feature-3{
+   font-family: 方正细等线简体;
+}
+
+.feature-3 .title-font{
+   font-family: "Minion Pro";
+   font-size: 3rem;
+}
+
+.feature-3 h1{
+   font-family: 庞门正道标题体;
+   font-size: 3rem;
+   font-weight: bold;
+}
+.feature-3 p{
+   font-family: 方正细等线简体;
+   font-size: 2.2rem;
+}
+@media only screen and (max-width: 767px) and (min-width: 0px) {
+
+   .feature-3 .title-font{
+      font-size: 1.5rem;
+      margin-left: 15%;
+   }
+
+   .feature-3 h1{
+      font-size: 1.5rem;
+   }
+   .feature-3 p{
+      font-size: 1.1rem;
+   }
+}

@@ -1,0 +1,52 @@
+.main{
+    text-align: center;
+}
+.main h2{
+    color: aliceblue;
+}
+.tab ul li{
+    list-style-type: none;
+}
+.tab a{
+    color: #444;
+}
+.top{
+    background-image: url(../../demo01/images/faq-backstage/left-background.jpg);
+   /* background-image: url(/images/faq-backstage/left-background.jpg);*/
+    background-repeat: no-repeat;
+    max-height: 100px;
+}
+
+.tab-content div{
+    margin-top: 20px;
+}
+
+.question{
+    color: black;
+}
+.input-group input{
+    height: 35px;
+}
+.input-group span{
+    display: inline-block;
+    line-height: 2.2em;
+    margin-right: 5px;
+}
+
+select{
+    display: inline-block;
+    height: 35px;
+    width: 250px;
+}
+
+#qas{
+	text-align:center;
+}
+#qas dt{
+	width:500px auto;
+	text-align:center;
+}
+#qas dd{
+	width:auto;
+	text-align:center;
+}

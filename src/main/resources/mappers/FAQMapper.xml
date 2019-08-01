@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.ideasStudio.website.mapper.FAQMapper">
+	<!-- /**
+	 * 插入一个问题板块
+	 * @return 返回操作受影响的行数
+	 * @param problem 插入的问题的板块
+	 */
+	Integer insertProblem(Problems problem); -->
+	
+	<insert id="insertProblem" parameterType="com.ideasStudio.website.entity.Problems"
+	useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO 
+			problems(
+			problem
+		)VALUES(
+			  #{problem}
+		)
+	</insert>
+	
+	<!-- /**
+	 * 插入一个具体的问题
+	 * @return 返回操作受影响的行数
+	 * @param qa  插入的具体的问题
+	 */
+	Integer insertQA(QA qa); -->
+	
+	<insert id="insertQA" parameterType="com.ideasStudio.website.entity.QA"
+	useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO 
+				qa(
+				question,
+				answer,
+				parentId)
+		VALUES(
+			#{question},
+			#{answer},
+			#{parentId}
+		)
+	</insert>
+	
+	<!-- /**
+	 * 通过问题板块的id获取问题大板块
+	 * @return 返回获取到的问题板块
+	 */
+	Problems getProblemById(Integer id);-->
+	
+	<select id="getProblemById" resultType="com.ideasStudio.website.entity.Problems">
+		SELECT 
+			id,
+			problem
+		FROM 
+			problems
+		WHERE 
+			id=#{id}
+	</select>
+
+	<!-- 	
+	/**
+	 * 通过问题详情的id获取问题
+	 * @return 返回获取到的问题
+	 */
+	QA getQAById(Integer id); -->
+		<select id="getQAById" resultType="com.ideasStudio.website.entity.QA">
+			SELECT 
+			id,
+			question,
+			answer,
+			parentId
+		FROM 
+			qa
+		WHERE 
+			id=#{id}
+		</select>
+	<!-- 
+	/**
+	 * 通过问题板块获取下面的所有的问题
+	 * @param parentId 问题板块id
+	 * @return 返回详情集合
+	 */
+	List<QA> getQAlistByParentId(Integer parentId); -->
+		<select id="getQAlistByParentId" resultType="com.ideasStudio.website.entity.QA">
+			SELECT 
+				id,
+				question,
+				answer,
+				parentId
+			FROM 
+				qa
+			where 
+				parentId = #{parentId}
+		</select>
+		
+	<!-- /**
+	 * 获取所有的问题板块  比如下拉选上需要用到
+	 * @return 返回成功获取问题板块的list集合
+	 */
+	List<Problems> getProblems(); -->
+		<select id="getProblems" resultType="com.ideasStudio.website.entity.Problems">
+		SELECT 
+			id,
+			problem
+		FROM 
+			problems
+	</select>
+	
+	
+	<!-- /**
+	 * 获取指定模块下有多少个问题
+	 * @param parentId 模块ID
+	 * @return 返回查询到的数量  为了在删除的时候判断删除数量对不对
+	 */
+	Integer getQACountByparntId(Integer parentId);-->
+	<select id="getQACountByparntId" resultType="java.lang.Integer">
+		SELECT 
+			COUNT(id)
+		FROM
+			qa
+		WHERE 
+			parentId =#{parentId}
+	</select>
+	
+	
+	<!--  /**
+	 * 根据id删除指定问题
+	 * @param id 问题的id
+	 * @return	返回受影响的行数
+	 */
+	Integer delQAById(Integer id);-->
+	<delete id="delQAById">
+		DELETE FROM
+			qa
+		WHERE 
+			id=#{id}
+	</delete>
+	
+	<!-- /**
+	 * 删除指定模块下的所有的问题
+	 * @param id 模块的id
+	 * @return 返回受影响的行数
+	 */
+	Integer delQAByparentId(Integer parentId);-->
+	<delete id="delQAByparentId">
+		DELETE FROM
+			qa
+		WHERE 
+			parentId =#{parentId}
+	</delete>
+	
+	
+	<!-- /**
+	 * 删除指定模块 
+	 * @param id 模块的id
+	 * @return 返回受影响的行数
+	 */
+	Integer delProblemById(Integer id); -->
+	<delete id="delProblemById">
+		DELETE FROM
+			problems
+		WHERE 
+			id=#{id}
+	</delete>
+	
+	
+	<resultMap type="com.ideasStudio.website.vo.ProblemsAndQA" id="all">
+		<result column="problem"  property="problem" />
+  		<collection property="qalist" ofType="com.ideasStudio.website.entity.QA">
+    		<result column="question"  property="question" />
+    		<result column="answer"  property="answer"/> 
+  		</collection>
+	</resultMap>
+	
+	<!-- /**
+	 * 获取所有的问题板块以及问题详情
+	 * @return 
+	 */
+	List<ProblemsAndQA> getAll(); -->
+	<select id="getAll" resultMap="all" resultType="com.ideasStudio.website.vo.ProblemsAndQA">
+		SELECT
+			 p.problem,
+			 q.question,
+			 q.answer
+		FROM 
+		problems p join qa q on p.id =q.parentId;
+	</select>
+</mapper>

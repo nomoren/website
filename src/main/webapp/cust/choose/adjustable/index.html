@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"/>
+<head>
+    <title>私人订制_选择尺寸和画框</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.5.2/css/fileinput.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.5.2/css/fileinput-rtl.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../css/area_pdp.css"/>
+    <link rel="prefetch" type="text/css" href="../css/area_cart-checkout.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/bazaarvoice.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/global_components.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/item.css"/>
+    <link rel="stylesheet" href="../cust/css/rect.css"/>
+    <link rel="stylesheet" href="../css/jquery.range.min.css"/>
+    <link rel="stylesheet" href="../cust/css/normalize.css"/>
+    <link rel="stylesheet" href="../cust/css/progressbar.css"/>
+    <script type="text/javascript" src="../cust/js/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery.range.min.js"></script>
+    <link rel="stylesheet" href="../cust/css/default.css"/>
+    <link rel="stylesheet" href="../cust/css/main.css"/>
+    <link rel="stylesheet" href="../cust/css/cropper.min.css"/>
+    <link rel="stylesheet" href="../cust/css/jquery.wizzy.css"/>
+    <link rel="stylesheet" href="../cust/css/progressbar.css"/>
+    <link rel="stylesheet" href="../cust/css/button.css"/>
+    <script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?462aa51b3531124fa543493a84dca9c9"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script>
+    <style>
+        .rect{width: 36.4vW;height: 18.2Vw;}
+        .rect-shape{width:100%;height: 100%;position: relative;
+            background: url("../cust/img/start-design.png") no-repeat center center;
+            background-size: 100% 100%;}
+        @media only screen and (min-width: 768px) {
+            .l-pdp {
+                max-width: 2048px;
+            }
+        }
+
+    </style>
+    <style type="text/css">
+        * {
+            touch-action: none;
+        }
+
+        .b-product-image__link img {
+            height: 70%;
+            width: 70%;
+        }
+
+        .b-product-preview__item {
+            height: auto;
+            margin-bottom: 1.25rem;
+            width: 65px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        fieldset{
+            border: 0px;
+        }
+        .step-arrow li:not(:last-child) a:after {
+            width: 39px;
+            height:42px;
+        }
+        .bg{border:solid 1px #DDD;margin-bottom:15px}
+        .bg.active{border-color: #000000;background:#FFF url(../cust/img/ico-selected.png) no-repeat right bottom}  #gds #painting .li .bg.active>a{color:#555}  #gds #painting .pai-sz-ul .li .bg a, #gds .xz .li .bg
+
+    </style>
+    <style type="text/css">
+        .theme-green .back-bar .pointer {
+            box-sizing: border-box;
+            border-radius: 1px;
+            box-shadow: 0px 1px 7px -2px #B2B2B2;
+            border-top: 1px solid #FFFFFF;
+            border-right: 1px solid #AAA;
+            border-bottom: 1px solid #AAA;
+            border-left: 1px solid #FFFFFF;
+        }
+
+        .theme-green .back-bar .selected-bar {
+            background: #B2B2B2;
+        }
+
+        .theme-green .back-bar .pointer-label {
+            font-size: 12px;
+            top: -24px;
+            color: #999;
+        }
+
+        .theme-green .back-bar .pointer-label::after {
+            top: 100%;
+            left: 50%;
+            margin-left: -4px;
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 4px solid transparent;
+            border-top-color: #f00;
+        }
+    </style>
+</head>
+<body class="b-page b-page_product-details">
+<div id="preloader"></div>
+<div id="b_head">
+	<div data-cmp="cookiesNotice" class="m-cmp_loaded"></div>
+	<div class="b-utility-bar js-utiltiy-bar">
+			<div class="b-utility-bar__inner">
+				<div class="l-utility-bar">
+					<div class="b-promo-top-banner">
+						<p>全场商品免运费！</p>
+					</div>
+
+					<div class="l-utility-bar__right js-customerinfo">
+						<div class="l-utility-bar__right js-customerinfo">
+
+						<span id="loginOrUserCenter">
+							<a class="" data-toggle="modal" data-target="#Login"
+								style="text-align: right;color: white;" id="alogin"> 登录 </a>
+							<a class="" href="../store/usercenter.html" 
+								style="text-align: right;color: white;display: none;" id="userCenter"> 个人中心 </a>
+							</span>
+
+							<div class="modal fade loading" id="Login" tabindex="-1" role="dialog"
+								aria-hidden="true" data-backdrop="false">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true">×</button>
+											<h4 class="modal-title" id="myModalLabel">登录提示：</h4>
+										</div>
+										<div class="modal-body" style="text-align: start">
+											<form id="login_form" action="" method="post" style="text-align: center;">
+											<input type="hidden" id="isMember" value="false"/>
+											<div class="login-left">
+												<div class="login-box show-mobb">
+													<div class="login-box-content">
+														<a class="e-login-detial-mobile form-input-mobile-margin">
+															<h4 class="float-clearfix  login-detial-border" style="color: #000;font-weight: bolder;font-size: 18px; margin-top: 10px; margin-bottom: 10px">短信快捷登录/注册</h4>
+														</a>
+													</div>
+													<div class="login-detial form-input-mobile-margin">
+														<div class="login-detial-account none">
+															<div class="form-input">
+																<input type="text" class="gl-input__field"
+																	id="loginMobile" name="loginName" value="" style="height: 40px;  line-height: 16px; width:300px; font-size: 14px; padding: 0 10px; border: 1px solid #c8cbcc;color: black" 
+																	placeholder="手机号" onblur="phoneReg(this)"/>
+															</div>
+															
+														</div>
+														<div class="login-detial-mobile">
+															<div
+																class="form-input-mobile-number form-input form-input-mobile-number-width" style="margin-top: 20px">
+																<input type="text" class="gl-input__field"
+																	id="loginCode" value="" style="height: 40px;  line-height: 16px; width:300px; font-size: 14px; padding: 0 10px; border: 1px solid #c8cbcc;color: black" placeholder="手机验证码"/> 
+															</div>
+															
+															<div class="form-input form-input-code daojishi ww-100 form-input-mobile-number-code block form-input-mobile-number-width none" style="top: 114px;width:100px; right: 150px; position: absolute;background-color: #000">
+																
+																<div class="code-img float-clearfix" style="text-align: center; height: 40px; line-height: 40px;">
+																	<a class="events-btn-git-code"
+																		onselectstart="return false"
+																		href="javascript:sendSMSValidateCode()" style="color: white;" onclick="getCode(this)">获取验证码</a>
+																</div>
+															</div>
+														</div>
+														<div class="login-btn float-clearfix" style="margin-top: 20px;">
+															<a
+																class="btn btn-blue icon-a-font gl-cta gl-cta--primary gl-cta--primary-light"
+																id="loginNewBtn"
+																style="width: 300px; max-width: 100%; background-color: #000; color: white;">登录<span
+																class="gl-icon icon-arrow-right-long gl-cta__icon icon--size-l"></span></a>
+														</div>
+														 <div class="third-party-login">
+																<a	id="wxLogin"
+																	class="btn btn-blue icon-a-font gl-cta gl-cta--primary gl-cta--primary-light"
+																	style="width: 300px; max-width: 100%; background-color: #000; color: white;margin-top: 0.3rem;margin-bottom: 0.5rem">微信登录<span
+																	class="gl-icon icon-arrow-right-long gl-cta__icon icon--size-l"></span></a>
+
+															</div>
+													</div>
+												</div>
+											</div>
+											<input name="_csrf" type="hidden"
+												value="24976535-987d-4622-b506-9c7feb81dc94"/>
+										</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<span class="b-header-spacer"></span>
+		<div class="b-header-icons">
+			<div class="b-header-icons__inner">
+				<div class="b-header-icons__content">
+					<div class="l-header-utility-menu">
+
+						<div class="l-header-utility-menu__item">
+							<div class="js-mini-cart-total">
+								<a
+									class="b-utility-button b-utility-button_minicart"
+									href="../store/cart.html" title="Your Basket"> <svg
+										class="b-utility-button__icon" role="img"
+										aria-labelledby="header-bag-ico" width="30" height="30"
+										version="1.1" viewBox="0 0 30 30"
+										xmlns="http://www.w3.org/2000/svg">
+									<title id="header-bag-ico">购物车</title>
+									<path
+											d="m3.4965 6.5267h22.992l0.03175 21.15c0 0.95864-0.62612 1.7635-1.4083 1.7635h-20.207c-0.78205 0-1.4083-0.77412-1.4083-1.7635z"
+											fill="none">
+									</path>
+									<path
+											d="m7.433 8.997c1.5083 0.00238 3.0167 0.00475 4.5251 7e-3 -0.74548 1.2e-6 -1.491 1.2e-6 -2.2364 2.5e-6 0.034823-1.705-0.17971-3.4751 0.47545-5.1059 0.47739-1.3312 1.7259-2.3364 3.1674-2.6348 1.8134-0.42322 3.9359-0.28559 5.3861 0.93223 1.3725 1.1876 1.6627 3.0587 1.6082 4.7346-0.0041 0.68998-0.0081 1.38-0.01251 2.0698h-2.2351 4.47-2.2351"
+											stroke-linecap="round" stroke-linejoin="round" fill="none">
+									</path>
+									<text id="js-mini-cart-total-qty"
+											class="b-utility-button__counter js-mini-cart-total-qty"
+											x="15.00363" y="21.651588" text-anchor="middle" stroke="none"
+											xml:space="preserve">0</text>
+</svg>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<div class="b-header-bottom js-header-bottom-container">
+    <div class="b-header-bottom__inner js-header-bottom-sticky-part">
+        <div class="b-header-search js-header-search">
+            <div class="b-header-search__inner">
+                <div class="js-simple-search l-search">
+                    <div class="l-search__left">
+                    </div>
+                   
+                    <div class="js-search-suggestions b-suggestions"></div>
+                </div>
+            </div>
+        </div>
+        <aside class="b-hamburger-menu">
+            <div class="b-hamburger-menu__inner">
+                <div class="b-hamburger-menu__menu">
+                    <nav class="b-main-menu js-sticky-menu" id="navigation">
+                        <div class="b-main-menu__inner">
+                            <div class="b-logo-sticky">
+                               <a class="b-logo-sticky__link" href="../index.html">
+                                    <img alt="" src="../images/nav/logo01.png" style="height: 30px;width: 100px;"/>
+                                </a>
+                            </div>
+                            <div class="js-main-menu" role="navigation">
+                                <ul class="b-main-menu__nav b-main-menu-accordion m-cmp_loaded menu-category"
+                                    data-cmp="accordion"
+                                    data-accordion="{&quot;mode&quot;:&quot;hideAnother&quot;, &quot;device&quot;: [&quot;small&quot;, &quot;medium&quot;], &quot;initState&quot;: true}"
+                                    itemscope="" style="font-family: 思源黑体 CN ExtraLight;font-size: 12px;">
+                                    <li class="js-button-back menu-item">
+                                       
+                                    </li>
+                                    <li class="b-main-menu__nav-item b-main-menu-accordion__item menu-item"
+                                    	style="font-family: 思源黑体 CN ExtraLight;font-size: 9px;">
+                                        <div class="b-main-menu__title b-main-menu-accordion__title js-accordion-head b-main-menu-accordion__title_us-sale b-main-menu__title_us-sale js-head-initialized"
+                                             itemprop="name">
+                                            <a class="b-main-menu__link b-main-menu__link_navigation"
+                                               href="../store/productlist.html" style="" itemprop="url"
+                                               id="megamenu-1551769394833-3" aria-controls="megamenu-1551769394833-4"
+                                               aria-expanded="false">
+                                               精选挂画
+                                            </a>
+                                            <svg class="b-main-menu-accordion__arrow" width="15" height="15"
+                                                 role="presentation" aria-hidden="true">
+                                                <use xlink:href="#icon-arrow-right"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="b-main-menu__flyout b-main-menu-accordion__content js-accordion-content sub-menu"
+                                             id="megamenu-1551769394833-4" role="region" aria-expanded="false"
+                                             aria-hidden="true" aria-labelledby="megamenu-1551769394833-3">
+                                            <div class="b-main-menu__flyout-inner b-main-menu-accordion m-cmp_loaded"
+                                                 data-cmp="accordion"
+                                                 data-accordion="{&quot;mode&quot;:&quot;hideAnother&quot;, &quot;device&quot;: [&quot;small&quot;, &quot;medium&quot;], &quot;initState&quot;: true}">
+                                                <div class="b-main-menu__column b-main-menu-accordion__item">
+                                                    <div class="b-main-menu__title b-main-menu__column-title b-main-menu-accordion__title js-accordion-head js-head-initialized"
+                                                         itemprop="name">
+                                                        <a class="b-main-menu__link"  
+                                                           href="../store/productlist.html?bigtype=1&amp;smalltype=0" 
+                                                           itemprop="url">
+                                                            风景
+                                                        </a>
+                                                        <svg class="b-main-menu-accordion__arrow" width="15" height="15"
+                                                             role="presentation" aria-hidden="true">
+                                                            <use xlink:href="#icon-arrow-right"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="b-main-menu-accordion__content js-accordion-content">
+                                                        <div class="b-main-menu-accordion">
+                                                            <div class="b-main-menu__column-item b-main-menu-accordion__title"
+                                                                 itemprop="name">
+                                                                <a class="b-main-menu__link" 
+                                                                   href="../store/productlist.html?bigtype=1&amp;smalltype=1"
+                                                                   itemprop="url">
+                                                                  	单幅画
+                                                                </a>
+                                                            </div>
+                                                            
+                                                            <div class="b-main-menu__column-item b-main-menu-accordion__title"
+                                                                 itemprop="name">
+                                                                <a class="b-main-menu__link"  
+                                                                href="../store/productlist.html?bigtype=1&amp;smalltype=2"
+                                                                   style="" itemprop="url">
+                                                                   多幅画
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="b-main-menu__column-item b-main-menu-accordion__title">
+                                                            <a class="b-main-menu__link"  
+                                                                href="../store/productlist.html?bigtype=1&amp;smalltype=3">
+                                                                组合画
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="b-main-menu__column b-main-menu-accordion__item">
+                                                    <div class="b-main-menu__title b-main-menu__column-title b-main-menu-accordion__title js-accordion-head js-head-initialized"
+                                                         itemprop="name">
+                                                        <a class="b-main-menu__link"  
+                                                            href="../store/productlist.html?bigtype=2&amp;smalltype=0" style=""
+                                                           itemprop="url">
+                                                            抽象
+                                                        </a>
+                                                        <svg class="b-main-menu-accordion__arrow" width="15" height="15"
+                                                             role="presentation" aria-hidden="true">
+                                                            <use xlink:href="#icon-arrow-right"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="b-main-menu-accordion__content js-accordion-content">
+                                                        <div class="b-main-menu-accordion">
+                                                            
+                                                            
+                                                            <div class="b-main-menu__column-item b-main-menu-accordion__title"
+                                                                 itemprop="name">
+                                                                <a class="b-main-menu__link"  
+                                                                   href="../store/productlist.html?bigtype=2&amp;smalltype=1"
+                                                                   style="" itemprop="url">
+                                                                    单幅画
+                                                                </a>
+                                                            </div>
+                                                            <div class="b-main-menu__column-item b-main-menu-accordion__title"
+                                                                 itemprop="name">
+                                                                <a class="b-main-menu__link"  
+                                                                   href="../store/productlist.html?bigtype=2&amp;smalltype=2"  
+                                                                   style="" itemprop="url">
+                                                                    套幅画
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="b-main-menu__column-item b-main-menu-accordion__title">
+                                                            <a class="b-main-menu__link"  
+                                                               href="../store/productlist.html?bigtype=2&amp;smalltype=3">
+                                                                组合画
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="b-main-menu__column b-main-menu-accordion__item">
+                                                    <div class="b-main-menu__title b-main-menu__column-title b-main-menu-accordion__title js-accordion-head js-head-initialized"
+                                                         itemprop="name">
+                                                        <a class="b-main-menu__link"  
+                                                          href="../store/productlist.html?bigtype=3&amp;smalltype=0" style=""
+                                                            itemprop="url">
+                                                           建筑
+                                                        </a>
+                                                        <svg class="b-main-menu-accordion__arrow" width="15" height="15"
+                                                             role="presentation" aria-hidden="true">
+                                                            <use xlink:href="#icon-arrow-right"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="b-main-menu-accordion__content js-accordion-content">
+                                                        <div class="b-main-menu-accordion">
+                                                            
+                                                            <div class="b-main-menu__column-item b-main-menu-accordion__title"
+                                                                 itemprop="name">
+                                                                <a class="b-main-menu__link"  
+                                                                  href="../store/productlist.html?bigtype=3&amp;smalltype=1"
+                                                                   style="" itemprop="url">
+                                                                    单幅画
+                                                                </a>
+                                                            </div>
+                                                            <div class="b-main-menu__column-item b-main-menu-accordion__title"
+                                                                 itemprop="name">
+                                                                <a class="b-main-menu__link"  
+                                                                  href="../store/productlist.html?bigtype=3&amp;smalltype=2"
+                                                                   style="" itemprop="url">
+                                                                    套幅画
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="b-main-menu__column-item b-main-menu-accordion__title">
+                                                            <a class="b-main-menu__link"  
+                                                               href="../store/productlist.html?bigtype=3&amp;smalltype=3">
+                                                                组合画
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="b-main-menu__column b-main-menu-accordion__item">
+                                                    <div class="b-main-menu__title b-main-menu__column-title b-main-menu-accordion__title js-accordion-head js-head-initialized"
+                                                         itemprop="name">
+                                                        <a class="b-main-menu__link"  
+                                                           href="../store/productlist.html?bigtype=4&amp;smalltype=0" style=""
+                                                           itemprop="url">
+                                                           植物
+                                                        </a>
+                                                        <svg class="b-main-menu-accordion__arrow" width="15" height="15"
+                                                             role="presentation" aria-hidden="true">
+                                                            <use xlink:href="#icon-arrow-right"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="b-main-menu-accordion__content js-accordion-content">
+                                                        <div class="b-main-menu-accordion">
+                                                            <div class="b-main-menu__column-item b-main-menu-accordion__title"
+                                                                 itemprop="name">
+                                                                <a class="b-main-menu__link"  
+                                                                  href=".../store/productlist.html?bigtype=4&amp;smalltype=1"
+                                                                   style="" itemprop="url">
+                                                                    单幅画
+                                                                </a>
+                                                            </div>
+                                                            <div class="b-main-menu__column-item b-main-menu-accordion__title"
+                                                                 itemprop="name">
+                                                                <a class="b-main-menu__link"  
+                                                                   href="../store/productlist.html?bigtype=4&amp;smalltype=2"
+                                                                   style="" itemprop="url">
+                                                                    套幅画
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="b-main-menu__column-item b-main-menu-accordion__title">
+                                                            <a class="b-main-menu__link"  
+                                                               href="../store/productlist.html?bigtype=4&amp;smalltype=3">
+                                                                组合画
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="b-main-menu__promo">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="b-main-menu__nav-item b-main-menu-accordion__item menu-item">
+                                        <div class="b-main-menu__title b-main-menu-accordion__title js-accordion-head b-main-menu-accordion__title_us-new-in b-main-menu__title_us-new-in js-head-initialized"
+                                             itemprop="name">
+                                            <a class="b-main-menu__link b-main-menu__link_navigation"
+                                               href="../cust/selectshape.html" style="" itemprop="url"
+                                               id="megamenu-1551769394835-5" aria-controls="megamenu-1551769394835-6"
+                                               aria-expanded="false">
+                                               私人订制
+                                            </a>
+                                            <svg class="b-main-menu-accordion__arrow" width="15" height="15"
+                                                 role="presentation" aria-hidden="true">
+                                                <use xlink:href="#icon-arrow-right"></use>
+                                            </svg>
+                                        </div>
+                                        
+                                    </li>
+                                    <li class="b-main-menu__nav-item b-main-menu-accordion__item menu-item "
+                                                style="text-align: center;">
+                                                <div class="b-main-menu__title  b-main-menu-accordion__title js-accordion-head js-head-initialized"
+                                                     itemprop="name" aria-expanded="false" aria-hidden="false">
+                                                    <a class="b-main-menu__link b-main-menu__link_navigation"
+                                                       id="megamenu-1551769394843-7"
+                                                       href="../store/productlist.html"
+                                                       aria-controls="megamenu-1551769394833-4"
+                                                       aria-expanded="false"> 名家精选 </a>
+                                                    <i class="b-main-menu-accordion__arrow" width="15" height="15" role="presentation" aria-hidden="true">
+                                                        <i class="glyphicon glyphicon-chevron-down"></i>
+                                                    </i>
+                                                </div>
+
+
+                                            <div class="b-main-menu__flyout b-main-menu-accordion__content js-accordion-content"
+                                                 id="megamenu-1551769394843-8" role="region"
+                                                 aria-expanded="false" aria-hidden="true"
+                                                 aria-labelledby="megamenu-1551769394833-3">
+                                                <div class="b-main-menu__flyout-inner b-main-menu-accordion m-cmp_loaded"
+                                                     data-cmp="accordion">
+                                                    <div class="b-main-menu__column b-main-menu-accordion__item title-to"
+                                                         style="text-align: center;">
+                                                        <div  class="b-main-menu__title b-main-menu__column-title b-main-menu-accordion__title js-accordion-head js-head-initialized"
+                                                              itemprop="name">
+                                                            <a class="b-main-menu__link"
+                                                               href="../store/productlist.html?bigtype=1&amp;smalltype=0"
+                                                               style="" itemprop="url"> 作家A </a>
+                                                            <i class="b-main-menu-accordion__arrow" width="15" height="15" role="presentation" aria-hidden="true">
+                                                                <i class="glyphicon glyphicon-chevron-down"></i>
+                                                            </i>
+                                                        </div>
+                                                        <div class="b-main-menu-accordion__content js-accordion-content"
+                                                             style="font-size: 9px">
+                                                            <div class="b-main-menu-accordion">
+                                                                <div class="b-main-menu__column-item b-main-menu-accordion__title"
+                                                                     itemprop="name">
+                                                                    <a class="b-main-menu__link"
+                                                                       href="../store/productlist.html?bigtype=1&amp;smalltype=1"
+                                                                       style="" itemprop="url"> 单幅画 </a>
+                                                                </div>
+                                                                <div class="b-main-menu__column-item b-main-menu-accordion__title"
+                                                                     itemprop="name">
+                                                                    <a class="b-main-menu__link"
+                                                                       href="../store/productlist.html?bigtype=1&amp;smalltype=2"
+                                                                       style="" itemprop="url"> 多幅画 </a>
+                                                                </div>
+                                                                <div class="b-main-menu__column-item b-main-menu-accordion__title">
+                                                                    <a class="b-main-menu__link"
+                                                                       href="../store/productlist.html?bigtype=1&amp;smalltype=3">
+                                                                        组合画 </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="b-main-menu__column b-main-menu-accordion__item title-to"
+                                                         style="text-align: center;">
+                                                        <div class="b-main-menu__title b-main-menu__column-title b-main-menu-accordion__title js-accordion-head js-head-initialized"
+                                                             itemprop="name">
+                                                            <a class="b-main-menu__link"
+                                                               href="../store/productlist.html?bigtype=2&amp;smalltype=0"
+                                                               style="" itemprop="url"> 作家B </a>
+                                                            <i class="b-main-menu-accordion__arrow" width="15" height="15" role="presentation" aria-hidden="true">
+                                                                <i class="glyphicon glyphicon-chevron-down"></i>
+                                                            </i>
+                                                        </div>
+                                                        <div class="b-main-menu-accordion__content js-accordion-content"
+                                                             style="font-size: 9px">
+                                                            <div class="b-main-menu-accordion">
+                                                                <div class="b-main-menu__column-item b-main-menu-accordion__title"
+                                                                     itemprop="name">
+                                                                    <a class="b-main-menu__link"
+                                                                       href="../store/productlist.html?bigtype=2&amp;smalltype=1"
+                                                                       style="" itemprop="url"> 单幅画 </a>
+                                                                </div>
+                                                                <div class="b-main-menu__column-item b-main-menu-accordion__title"
+                                                                     itemprop="name">
+                                                                    <a class="b-main-menu__link"
+                                                                       href="../store/productlist.html?bigtype=2&amp;smalltype=2"
+                                                                       style="" itemprop="url"> 多幅画 </a>
+                                                                </div>
+                                                                <div class="b-main-menu__column-item b-main-menu-accordion__title">
+                                                                    <a class="b-main-menu__link"
+                                                                       href="../store/productlist.html?bigtype=2&amp;smalltype=3">
+                                                                       组合画 </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="b-main-menu__column b-main-menu-accordion__item title-to"
+                                                         style="text-align: center;">
+                                                        <div class="b-main-menu__title b-main-menu__column-title b-main-menu-accordion__title js-accordion-head js-head-initialized"
+                                                             itemprop="name">
+                                                            <a class="b-main-menu__link"
+                                                               href="../store/productlist.html?bigtype=3&amp;smalltype=0"
+                                                               style="" itemprop="url"> 作家C </a>
+                                                            <i class="b-main-menu-accordion__arrow" width="15" height="15" role="presentation" aria-hidden="true">
+                                                                <i class="glyphicon glyphicon-chevron-down"></i>
+                                                            </i>
+                                                        </div>
+                                                        <div class="b-main-menu-accordion__content js-accordion-content"
+                                                             style="font-size: 9px">
+                                                            <div class="b-main-menu-accordion">
+                                                                <div class="b-main-menu__column-item b-main-menu-accordion__title"
+                                                                     itemprop="name">
+                                                                    <a class="b-main-menu__link"
+                                                                       href="../store/productlist.html?bigtype=3&amp;smalltype=1"
+                                                                       style="" itemprop="url"> 单幅画 </a>
+                                                                </div>
+                                                                <div class="b-main-menu__column-item b-main-menu-accordion__title"
+                                                                     itemprop="name">
+                                                                    <a class="b-main-menu__link"
+                                                                       href="../store/productlist.html?bigtype=3&amp;smalltype=2"
+                                                                       style="" itemprop="url"> 多幅画 </a>
+                                                                </div>
+                                                                <div class="b-main-menu__column-item b-main-menu-accordion__title">
+                                                                    <a class="b-main-menu__link"
+                                                                       href="../store/productlist.html?bigtype=3&amp;smalltype=3">
+                                                                       组合画 </a>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="b-main-menu__promo"></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    <li class="b-main-menu__nav-item b-main-menu-accordion__item menu-item">
+                                        <div class="b-main-menu__title b-main-menu-accordion__title js-accordion-head b-main-menu-accordion__title_us-men b-main-menu__title_us-men js-head-initialized"
+                                             itemprop="name">
+                                            <a class="b-main-menu__link b-main-menu__link_navigation"
+                                               href="../store/brandstory.html" style="" itemprop="url"
+                                               id="megamenu-1551769394847-9" aria-controls="megamenu-1551769394847-10"
+                                               aria-expanded="false">
+                                                品牌故事
+                                            </a>
+                                            <svg class="b-main-menu-accordion__arrow" width="15" height="15"
+                                                 role="presentation" aria-hidden="true">
+                                                <use xlink:href="#icon-arrow-right"></use>
+                                            </svg>
+                                        </div>
+                                        
+                                    </li>
+                                    <li class="b-main-menu__nav-item b-main-menu-accordion__item menu-item">
+                                        <div class="b-main-menu__title b-main-menu-accordion__title js-accordion-head b-main-menu-accordion__title_us-kids b-main-menu__title_us-kids js-head-initialized"
+                                             itemprop="name">
+                                            <a class="b-main-menu__link b-main-menu__link_navigation"
+                                               href="../store/contactus.html" style="" itemprop="url"
+                                               id="megamenu-1551769394854-11" aria-controls="megamenu-1551769394854-12"
+                                               aria-expanded="false">
+                                                联系我们
+                                            </a>
+                                            <svg class="b-main-menu-accordion__arrow" width="15" height="15"
+                                                 role="presentation" aria-hidden="true">
+                                                <use xlink:href="#icon-arrow-right"></use>
+                                            </svg>
+                                        </div>
+                                       
+                                    </li>
+                                   
+                                   
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="b-hamburger-menu__footer b-hide_lg">
+                    <nav class="b-hamburger-list">
+                        <div class="b-hamburger-list__link">
+                            &nbsp;
+                        </div>
+                        <div class="b-hamburger-list__item">
+                            <a class="b-hamburger-list__link" href="#" title="Favorites">
+                                <svg class="b-hamburger-list__icon" width="16" height="16" role="presentation">
+                                    <use xlink:href="#icon-heart"></use>
+                                </svg>
+                                <span class="b-hamburger-list__text">
+Saved Items
+(<strong data-cmp="headerWishlist" class="m-cmp_loaded">0</strong>)
+</span>
+                            </a>
+                        </div>
+                       
+                       
+                    </nav>
+                </div>
+            </div>
+            <i class="b-hamburger-menu__overlay js-header-menu-close"></i>
+        </aside>
+    </div>
+</div>
+</div>
+
+<div class="wrapper" >
+    <div class="wz-wrapper wizzy">
+        <div class="wz-header">
+            <ul class="nav nav-pills nav-justified step step-arrow">
+                <li><a>选择材质、形状</a></li>
+                <li><a>上传图片</a></li>
+                <li><a>选择画框、尺寸</a></li>
+            </ul>
+        </div>
+        <div id="main" class="l-page">
+            <div id="primary">
+                <div class="l-pdp">
+                    <div class="l-pdp__main">
+                        <div class="l-pdp__thumbnails">
+                            <div class="l-pdp__thumbnails-content">
+                                <div class="l-product-images-grid container" style="float: left">
+                                    <div class="col-md-12">
+                                        <div class="col-md-12">
+                                            <div class="rect">
+                                                <div id="piece-0"  class="rect-shape tile"
+                                                     onclick="chooserect()"
+                                                     data-idealHeight="4803"
+                                                     data-idealwidth="9607" data-cta-target=".chooseImage"
+                                                     data-piece="0" data-cut="false" data-toggle="modal" data-target="#cutwindow">
+                                                    <input class="sr-only" name="aspestRatio" value="1.3333333333333333" type="radio" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="cutwindow" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="false" style="z-index: 999999">
+                        <div class="modal-dialog" style="width: 80%">
+                            <div class="modal-content" >
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                </div>
+                                <div class="modal-body" align="center">
+                                    <label class="alert alert-warning">
+                                        <p>上传 您想要我们制作的图像 请确认文件小于100M (<a style="color:red;text-decoration: none;">大于100M请联系客服处理 </a>)分辨率>1000*1000</p>
+                                    </label>
+                                    <div>
+                                        <div class="col-md-11" align="center">
+                                            <label for="inputImage" title="上传文件">
+                                                <input id="inputImage" name="CustomImage" type="file" accept="image/*" ondragenter="return false"/>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="img-container" style="background: url('../cust/img/start-design.png') no-repeat;background-size: 100% 100%">
+                                                <canvas id="canvas" width="750" height="466" style="position: relative;z-index: 999999;"></canvas>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 args">
+                                            <div style="margin-bottom: 1rem">
+                                                <a class="confirm" onclick="cut()">确定</a>
+                                            </div>
+                                            <div class="docs-data">
+                                                <div class="input-group" style="display: none">
+                                                    <label class="input-group-addon" for="dataX">X轴</label>
+                                                    <input class="form-control" id="dataX" type="text" placeholder="x"/>
+                                                    <span class="input-group-addon">px</span>
+                                                </div>
+                                                <div class="input-group" style="display: none">
+                                                    <label class="input-group-addon" for="dataY">Y轴</label>
+                                                    <input class="form-control" id="dataY" type="text" placeholder="y"/>
+                                                    <span class="input-group-addon">px</span>
+                                                </div>
+                                                <div class="input-group">
+                                                    <label class="input-group-addon" for="dataWidth">宽度</label>
+                                                    <input class="form-control" id="dataWidth" type="text" placeholder="width"/>
+                                                    <span class="input-group-addon">px</span>
+                                                </div>
+                                                <div class="input-group">
+                                                    <label class="input-group-addon" for="dataHeight">高度</label>
+                                                    <input class="form-control" id="dataHeight" type="text" placeholder="height"/>
+                                                    <span class="input-group-addon">px</span>
+                                                </div>
+                                                <div style="border:2px dashed red;padding:5px;">
+                                                    <div class="input-group">
+                                                        <label class="input-group-addon" for="dataHeight">建议高度</label>
+                                                        <input class="form-control" id="idealHeight" type="text" placeholder="height"/>
+                                                        <span class="input-group-addon">px</span>
+                                                    </div>
+                                                    <div class="input-group" style="margin-bottom: 2rem;">
+                                                        <label class="input-group-addon" for="dataHeight">建议宽度</label>
+                                                        <input class="form-control" id="idealwidth" type="text" placeholder="width"/>
+                                                        <span class="input-group-addon">px</span>
+                                                    </div>
+                                                    <a class="alert alert-warning">
+                                                        <p class="glyphicon glyphicon-warning-sign">低于此分辨率可能会不清晰</p>
+                                                    </a>
+                                                </div>
+                                                <form id="form_cust" action="../cust/choosesize.do" method="post">
+                                                    <div class="input-group">
+                                                        <input type="hidden" id="uploadfilename"/>
+                                                    </div>
+                                                    <div class="input-group">
+                                                        <input type="hidden" id="piece" value="NaN"/>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="docs-preview clearfix" style="position: relative">
+                                                <div class="img-preview preview-lg"></div>
+                                                <div class="preview preview-lg smallpic"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-pdp__details" >
+                        <div class="l-pdp__details-content">
+                            <p>私人订制产品</p>
+                            <div id="product-content" class="js-product-impression">
+                                <div class="b-accordion-plus b-accordion-plus_pdp m-cmp_loaded"
+                                     data-cmp="accordion"
+                                     data-accordion="{ &quot;mode&quot;:&quot;closeAnother&quot; }">
+                                    <div class="b-accordion-plus__item">
+                                        <div class="b-accordion-plus__line js-accordion-head js-head-initialized js-accordion_active" style="font-family:思源黑体 CN Regular;font-size: 15px;">
+                                            选择尺寸 <i class="b-accordion-plus__arrow"></i>
+                                        </div>
+                                        <div class="b-accordion-plus__content b-content-inline js-accordion-content js-accordion_active" align="center">
+                                            <div class="b-accordion-plus__content-inner">
+                                                <div class="b-content-asset b-content-asset_delivery-options content-asset">
+                                                    <ul class="btn-group btn-group-xs btn-group-justified bot15" style="margin-left:-25px;" id="tab_xz_sz">
+                                                        <li class="btn btn-default" id="sz-1">
+                                                            <a  href="#sz1"  data-toggle="tab">默认标准尺寸</a>
+                                                        </li>
+                                                        <li class="btn btn-default" id="sz-2" >
+                                                            <a href="#sz2" data-toggle="tab">比例尺寸</a>
+                                                        </li>
+                                                        <li class="btn btn-default" id="sz-3">
+                                                            <a href="#sz3" data-toggle="tab">自定义尺寸</a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="panel-body tab-content sz" style="padding:0px;border-top:0;">
+                                                        <div class="row tab-pane fade"  id="sz1"></div>
+
+                                                        <div class="row tab-pane fade" id="sz2"> </div>
+
+                                                        <div class="row tab-pane fade" id="sz3"> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="b-accordion-plus__item">
+                                        <div class="b-accordion-plus__line js-accordion-head js-head-initialized" style="font-family:思源黑体 CN Regular;font-size: 15px;">
+                                            选择边框<i class="b-accordion-plus__arrow"></i>
+                                        </div>
+                                        <div class="b-accordion-plus__content b-content-inline js-accordion-content" align="center">
+                                            <div class="b-accordion-plus__content-inner">
+                                                <div class="b-content-asset b-content-asset_delivery-options content-asset">
+                                                    <div class="form-group">
+                                                        <div class="col-lg-12">
+                                                            <select id="border" name="border" class="selectpicker show-tick form-control" data-live-search="true">
+                                                                <option value="1">全部画框</option>
+                                                                <option value="拉丝">拉丝</option>
+                                                                <option value="哑香槟">哑香槟</option>
+                                                                <option value="哑橙金">哑橙金</option>
+                                                                <option value="哑玫瑰">哑玫瑰</option>
+                                                                <option value="玫瑰">玫瑰</option>
+                                                                <option value="亮黑">亮黑</option>
+                                                                <option value="哑黑">哑黑</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" style="margin-top: 2rem;height: auto; max-height:700px;overflow-x: hidden;overflow-y: auto" id="selectborder">
+                                                        <div>
+                                                            <a class="text-muted">
+                                                                <div style="position:relative" class="bm"></div>
+                                                                <a>该款产品无适配边框</a>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul>
+                                    <li class="b-product-variations__item b-product-variations__item_size"
+                                        style="margin-bottom: 12px">
+                                        <form id="form_submit" action="" method="post">
+                                            <div class="input-group-submit">
+                                                <input type="hidden" name="id" id="id"
+                                                       value="" readonly="true" />
+                                                <input type="hidden" name="ordernumber"
+                                                       id="ordernumber"
+                                                       value="" readonly="true" />
+                                                <input type="hidden" name="shape"
+                                                       id="shape"
+                                                       value="1" readonly="true" />
+                                                <input type="hidden" name="material"
+                                                       id="material"
+                                                       th:value="${material}" readonly="true" />
+                                                <input type="hidden" name="perimeter"
+                                                       id="perimeter" value="0" readonly="true" />
+                                                <input type="hidden" name="total"
+                                                       id="total" value="0.00" readonly="true" />
+                                                <input type="hidden" name="paintingPrice"
+                                                       id="paintingPrice" value="0.00" readonly="true" />
+                                                <input type="hidden" name="borderId"
+                                                       id="borderId" value="-1" readonly="true" />
+                                                <input type="hidden" name="borderPrice"
+                                                       id="borderPrice" value="0.00" readonly="true" />
+                                                <input type="hidden" name="sizeWidth" id="sizeWidth"
+                                                       readonly="true" value="0" />
+                                                <input type="hidden" name="sizeHeight" id="sizeHeight"
+                                                       readonly="true" value="0" />
+                                                <input type="hidden" name="sizeId" id="sizeId"
+                                                       readonly="true" value="-1" />
+                                                <input type="hidden" name="adjustable"
+                                                       id="adjustable" value="1" readonly="true" />
+                                            </div>
+                                        </form>
+                                        <div class="input-group-record">
+                                            <input type="hidden" name="uid" id="uid"
+                                                   value="null" readonly="true" />
+                                            <input type="hidden" name="uuid" id="uuid"
+                                                   value="null" readonly="true" />
+                                        </div>
+                                    </li>
+                                    <li class="b-product-variations__item b-product-variations__item_size" style="margin-bottom: 12px">
+                                        <div class="b-price" style="margin-bottom: 8px;margin-top: 10px">
+                                            <span class="b-price__value_new">
+                                                <span class="b-price__digit js-price" id="price"
+                                                      style="font-family: 思源宋体 CN Heavy;font-size: 15px;"> ￥00.00 </span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <form action="" method="post"
+                                      id="dwfrm_product_addtocart_d0bjitlyhswq"
+                                      class="js-pdpForm" novalidate="novalidate">
+                                    <fieldset>
+                                        <div class="b-product-message-wrap">
+                                            <div class="b-product-message b-product-message_avalability">
+                                            </div>
+                                        </div>
+                                        <div class="b-product-add-to-cart">
+                                            <div class="b-hide inventory">
+                                                <div class="quantity">
+                                                    <input type="hidden" class="input-text"
+                                                           name="Quantity"
+                                                           id="Quantity" size="2"
+                                                           maxlength="3" value="1"
+                                                           data-available="0"/>
+                                                </div>
+                                            </div>
+                                            <button id="add-to-cart" type="button"
+                                                    class="b-button-default b-button_black b-button_full-width b-button_semi-disabled js-add-to-cart js-variation-not-selected"
+                                                    style="font-family:思源黑体 CN Regular;font-size: 15px;">
+                                                加入购物车
+                                            </button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                                <div class="b-accordion-plus b-accordion-plus_pdp m-cmp_loaded"
+                                     data-cmp="accordion"
+                                     data-accordion="{ &quot;mode&quot;:&quot;closeAnother&quot; }">
+                                    <div class="b-accordion-plus__item">
+                                        <div class="b-accordion-plus__line js-accordion-head js-head-initialized js-accordion_active"
+                                             style="font-family:思源黑体 CN Regular;font-size: 15px; padding-bottom: 0px">
+                                            商品详情 <i class="b-accordion-plus__arrow"></i>
+                                        </div>
+                                        <div class="b-accordion-plus__content b-content-inline js-accordion-content js-accordion_active" style="    margin-top: 0px;padding-top: 5px">
+                                            <div class="b-accordion-plus__content-inner">
+                                                <p class="b-content-longdesc"></p>
+                                                <div class="b-content-bullets">
+                                                    <ul style="font-family:思源黑体 CN ExtraLight;font-size: 12px;">
+                                                        <li id="">圆形定制材料上有2CM为定制预留区域</li>
+                                                    </ul>
+                                                    <p></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="b-accordion-plus__item">
+                                        <div
+                                                class="b-accordion-plus__line js-accordion-head  js-head-initialized"
+                                                style="font-family:思源黑体 CN Regular;font-size: 15px;">
+                                            安装说明 <i class="b-accordion-plus__arrow"></i>
+                                        </div>
+                                        <div
+                                                class="b-accordion-plus__content b-content-inline js-accordion-content">
+                                            <div class="b-accordion-plus__content-inner">
+                                                <div
+                                                        class="b-content-asset b-content-asset_delivery-options content-asset">
+                                                    <section>
+                                                        <p style="font-family:思源黑体 CN ExtraLight;font-size: 10px;line-height: 1.5em">
+															1. 先将模板贴在大概的位置<br/>
+															2. 用尺子测量模板左右和上下的距离,再进行调整挪动以确定最终位置<br/>
+															3. 利用水平珠对模板进行水平调整,水平珠里的气泡保持两条垂直线之间即可,达到水平平行后把橙板固定在墙上<br/>
+															4. 在确保模板位置无课后格无病打钉在模板挂点位置,无痕钉安装后将模板撕下<br/>
+															5. 最后将挂画的画框从上往下卡入无痕钉挂扣内<br/>
+															6. 挂好后装饰画可以左右挪动调整与画之间的间隔,每幅之间的间距为2厘米<br/>
+														</p>
+														<p style="font-family:思源黑体 CN ExtraLight;font-size: 10px;line-height: 1.5em">
+															清洁:
+															对于一般灰尘处理可用鸡毛操除去灰尘,再以软质抹布浸水擦拭若表面有油污,则用软性洗洁剂兑水,再以软质抹布擦拭因为亚克力独特的材质,在清洁时要注意不能使用过硬的物品,以免产生划痕.
+														</p>
+														<p style="font-family:思源黑体 CN ExtraLight;font-size: 10px;line-height: 1.5em">
+															保养:
+															定期擦去表面深尘,可使用喷雾螺水清洁保养,既有清洁功效又能在表面形成透明保护膜!
+														</p>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="b-footer">
+		<div class="b-footer-top">
+			<div class="b-footer-top__inner">
+
+				<nav class="l-footer-bottom b-footer-nav m-cmp_loaded"
+					data-cmp="accordion"
+					data-accordion="{ &quot;mode&quot;:&quot;closeAnother&quot;, &quot;device&quot;: [&quot;small&quot;] }">
+					<div class="l-footer-bottom__item b-footer-nav__item">
+						<div
+							class="b-content-asset b-content-asset_footer-support content-asset">
+							<h3
+								class="b-footer-nav__title js-accordion-head js-head-initialized">
+								爱得司
+								<svg width="16" height="16" class="b-footer-nav__control"
+									focusable="false" role="img">
+										<use xlink:href="#icon-arrow-right"></use>
+									</svg>
+							</h3>
+							<ul class="b-footer-nav__list js-accordion-content">
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="../store/brandstory.html"
+									title="品牌故事">品牌故事</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="../store/consociation.html" 
+									title="品牌合作">品牌合作</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="../store/usercenter.html"
+									title="注册">注册会员</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="../store/joinus.html"
+									title="加入我们">加入我们</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="l-footer-bottom__item b-footer-nav__item">
+						<div
+							class="b-content-asset b-content-asset_footer-service content-asset">
+							<h3
+								class="b-footer-nav__title js-accordion-head js-head-initialized">
+								常见问题
+								<svg width="16" height="16" class="b-footer-nav__control"
+									focusable="false" role="img">
+										<use xmlns:xlink="http://www.w3.org/1999/xlink"
+										xlink:href="#icon-arrow-right"></use>
+									</svg>
+							</h3>
+							<ul class="b-footer-nav__list js-accordion-content">
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="../store/FAQ.html"
+									title="常见问题">FAQ</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="../store/packaging.html" title="产品包装">产品包装</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="../store/privacy.html" title="隐私政策">隐私政策</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="../store/salesreturn.html" title="提货政策">退货政策</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="l-footer-bottom__item b-footer-nav__item">
+						<div
+							class="b-content-asset b-content-asset_footer-about content-asset">
+							<h3
+								class="b-footer-nav__title js-accordion-head js-head-initialized">
+								关于我们</h3>
+							<ul class="b-footer-nav__list js-accordion-content">
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="../store/quality.html" title="品质保障">品质保障</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="../store/technology.html" title="产品科技">产品科技</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="../store/design.html" title="产品设计">产品设计</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="../store/copyright.html" title="产品版权">产品版权</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="l-footer-bottom__item b-footer-nav__item">
+						<div
+							class="b-content-asset b-content-asset_footer-account content-asset">
+							<h3
+								class="b-footer-nav__title js-accordion-head js-head-initialized">
+								联系我们
+								<svg width="16" height="16" class="b-footer-nav__control"
+									role="presentation">
+										<use xmlns:xlink="http://www.w3.org/1999/xlink"
+										xlink:href="#icon-arrow-right"></use>
+									</svg>
+							</h3>
+							<ul class="b-footer-nav__list js-accordion-content">
+								<li class="b-footer-nav__list-item"> 
+									<div class="text">
+										<p>东莞市虎门镇莞太路378号</p>
+									</div></li>
+								<li class="b-footer-nav__list-item"> 
+									<div class="text">
+										<p>0769-85519158</p>
+									</div></li>
+								<li class="b-footer-nav__list-item"> 
+									<div class="text">
+										<p>info@ideas-tudio.com</p>
+									</div></li>
+								<li class="b-footer-nav__list-item"> 
+									<div class="text">
+										<p>周一至周六 9:00-18:00</p>
+									</div></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+		 <div class="b-footer-bottom">
+        <div class="b-footer-bottom__inner">
+            <nav class="b-footer-legal m-cmp_loaded" data-cmp="accordion" data-accordion="{ &quot;mode&quot;:&quot;closeAnother&quot;, &quot;device&quot;: [&quot;small&quot;] }">
+                <div class="b-content-asset b-content-asset_footer-legal content-asset">
+                    <div class="b-footer-legal__inner">
+                        <nav class="b-footer-legal__content js-accordion-content">
+                            <ul class="b-footer-legal__list">
+                                <li class="b-footer-legal__item">
+                                    <i class="icon icon-ebs1"></i>
+                                    <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备16052339号-2</a>
+                                </li>
+                                <li class="b-footer-legal__item">
+                                    <i class="icon icon-ebs2"></i>
+                                    <a href="http://beian.gov.cn/portal/registerSystemInfo" target="_blank">粤公网安备：44190002003752号</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </nav>
+            <div class="b-footer-copyright">
+                <div class="b-content-asset b-content-asset_footer-copyright content-asset">
+                     IDEAS-TUDIO
+                </div>
+            </div>
+        </div>
+    </div>
+		
+	</footer>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.5.2/js/fileinput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.5.2/js/locales/zh.min.js"></script>
+<script type="text/javascript" src="../js/libs.min.js"></script>
+<script type="text/javascript" src="../cust/js/choosesize.js"></script>
+<script type="text/javascript" src="../cust/js/adjustablejoincart.js"></script>
+<script type="text/javascript" src="../cust/js/lib.js"></script>
+<script type="text/javascript" src="../js/login.js"></script>
+<script type="text/javascript" charset="utf-8" src="../cust/js/cropper.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../cust/js/main.js"></script>
+<script type="text/javascript" charset="utf-8" src="../cust/js/adjustable.js"></script>
+<script>
+    (function () {
+        window.Resources = {
+            "VIEWPORT_SMALL_MIN_WIDTH": "320",
+            "VIEWPORT_SMALL_MAX_WIDTH": "767",
+        };
+        window.Urls = {"cookieHint": "",};
+        window.SitePreferences = {};
+    }());
+    (function () {
+        window.SessionAttributes = {"digitalUserData": {"userData": {}}};
+        window.User = {"zip": null, "storeId": null, "isAuthenticated": false};
+    }());
+    var pageContext = {}, digitalData = {}, meta = "", keywords = "";
+</script>
+<script>
+    var pageContext = {}, digitalData = {}, meta = "", keywords = "";
+    window.onload = function () {
+        getSizeDetails();
+    }
+    $(".wizzy").wizzy();
+    bsStep(3);
+
+    function getsize(width,height){
+        setRectSize(width,height);
+        var ratio  = width / height;
+        $("#canvas").cropper("setAspectRatio",ratio);
+    }
+</script>
+<script src="../js/app.js"></script>
+</body>
+</html>

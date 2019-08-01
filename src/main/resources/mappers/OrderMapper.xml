@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.ideasStudio.website.mapper.OrderMapper">
+	<!--创建订单  -->
+	<insert id="createOrder" parameterType="com.ideasStudio.website.entity.Order" useGeneratedKeys="true" keyProperty="id">
+		insert into ordertable (
+				id,uid,orderNo,
+				recvName,recvPhone,recvTel,
+				recvDistrict,recvAddress,recvZip,
+				pay,payStatus,outStatus,takeStatus,orderTime,payTime,giftCard,useCoupons
+		)
+		values(
+				#{id},#{uid},#{orderNo},
+				#{recvName},#{recvPhone},#{recvZip},
+				#{recvDistrict},#{recvAddress},#{recvZip},
+				#{pay},#{payStatus},#{outStatus},#{takeStatus},#{orderTime},#{payTime},#{giftCard},#{useCoupons}
+		)
+	</insert>
+	
+	<!--创建订单的商品  -->
+	<insert id="createOrderItem" parameterType="com.ideasStudio.website.entity.OrderItem" useGeneratedKeys="true" keyProperty="id">
+		insert into orderitem(
+				 orderId,goodsId,goodsImage,goodsTitle,goodsPrice,
+				 goodsNum,goodsLength,goodsWidth,goodsNo,allMoney
+		)
+		values(
+				#{orderId},#{goodsId},#{goodsImage},#{goodsTitle},#{goodsPrice},
+				#{goodsNum},#{goodsLength},#{goodsWidth},#{goodsNo},#{allMoney}
+		)
+	</insert>
+	
+	<resultMap type="com.ideasStudio.website.vo.OrderVo" id="orderMap">
+		<id column="oid"  property="oid"/>
+		<result column="uid" property="uid"/>
+		<result column="orderNo" property="orderNo"/>
+		<result column="recvName" property="recvName"/>
+		<result column="recvPhone" property="recvPhone"/>
+		<result column="recvTel" property="recvTel"/>
+		<result column="recvDistrict" property="recvDistrict"/>
+		<result column="recvAddress" property="recvAddress"/>
+		<result column="recvZip" property="recvZip"/>
+		<result column="pay" property="pay"/>
+		<result column="payStatus" property="payStatus"/>
+		<result column="outStatus" property="outStatus"/>
+		<result column="takeStatus" property="takeStatus"/>
+		<result column="payWay" property="payWay"/>
+		<result column="orderTime" property="orderTime"/>
+		<result column="payTime" property="payTime"/>
+		<collection property="list" ofType="com.ideasStudio.website.entity.OrderItem">
+			<id column="tid" property="id"/>
+			<result column="goodsId" property="goodsId"/>
+			<result column="goodsImage" property="goodsImage"/>
+			<result column="goodsTitle" property="goodsTitle"/>
+			<result column="goodsPrice" property="goodsPrice"/>
+			<result column="goodsNum" property="goodsNum"/>
+			<result column="goodsLength" property="goodsLength"/>
+			<result column="goodsWidth" property="goodsWidth"/>
+			<result column="goodsNo" property="goodsNo"/>
+			<result column="allMoney" property="allMoney"/>
+		</collection>
+	</resultMap>
+	<!--根据订单id查询订单详情,包括商品列表 -->
+	<select id="getOrderById" resultMap="orderMap">
+		select o.id as oid,
+			   o.uid,o.orderNo,o.recvName,o.recvPhone,o.recvTel,
+			   o.recvDistrict,o.recvAddress,o.recvZip,
+			   o.pay,o.payStatus,o.outStatus,o.takeStatus,o.payWay,o.orderTime,o.payTime,
+			   t.id as tid,
+			   t.goodsId,t.orderId,
+			   t.goodsImage,t.goodsTitle,
+			   t.goodsPrice,t.goodsNum,t.goodsLength,
+			   t.goodsWidth,t.goodsNo,t.allMoney
+	from 
+		ordertable as o
+	inner join
+		orderitem as t
+	on
+		o.id=t.orderId
+	where o.id=#{id}
+	</select>
+	
+	<!--根据订单id查询用户id  -->
+	<select id="getUidByOrderId" resultType="string">
+		select uid from ordertable where id=#{id}
+	</select>
+	
+	<!--根据订单id查询订单的总金额  -->
+	<select id="getOrderMoneyByOrderId" resultType="double">
+		select pay from ordertable where id=#{id}
+	</select>
+	<!--根据orderNo查询订单的总金额  -->
+	<select id="getOrderMoneyByOrderNo" resultType="double">
+		select pay from ordertable where orderNo=#{orderNo}
+	</select>
+	<!--根据时间范围查询用户的所有订单  -->
+	<select id="getOrderByDate" resultMap="orderMap">
+		select o.id as oid,
+			   o.uid,o.orderNo,o.recvName,o.recvPhone,o.recvTel,
+			   o.recvDistrict,o.recvAddress,o.recvZip,
+			   o.pay,o.payStatus,o.outStatus,o.takeStatus,o.payWay,o.orderTime,o.payTime,
+			   t.id as tid,
+			   t.goodsId,t.orderId,
+			   t.goodsImage,t.goodsTitle,
+			   t.goodsPrice,t.goodsNum,t.goodsLength,
+			   t.goodsWidth,t.goodsNo,t.allMoney
+	from 
+		ordertable as o
+	inner join
+		orderitem as t
+	on
+		o.id=t.orderId
+	where o.orderTime between #{start} and #{end} and o.uid=#{uid}
+	</select>
+	<!--查询用户购物车数量 -->
+	<select id="getUserOrderCount" resultType="int">
+		select count(uid) from ordertable where uid=#{uid} 
+	</select>
+	
+	<!--根据状态查询订单信息  -->
+	<select id="getOrderByStatus" resultType="com.ideasStudio.website.entity.Order">
+		select 	id,uid,orderNo,
+				recvName,pay,orderTime,payTime,payWay
+		from ordertable where payStatus=#{payStatus} and outStatus=#{outStatus} and takeStatus=#{takeStatus} 
+		limit #{jump},#{num}
+	</select>
+	<!--根据状态查询订单数  -->
+	<select id="getOrderCountByStatus" resultType="int">
+		select count(id) from ordertable where payStatus=#{payStatus} and outStatus=#{outStatus} and takeStatus=#{takeStatus} 
+	</select>
+	<!--根据订单id查询订单详情，不包括商品列表  -->
+	<select id="getOrderInfo" resultType="com.ideasStudio.website.entity.Order">
+		select 	uid,orderNo,
+				recvName,recvPhone,recvTel,
+				recvDistrict,recvAddress,recvZip,
+				giftCard
+		from ordertable where id=#{id}
+	</select>
+	<!--跟新订单的状态  -->
+	<update id="updateOrderStatus">
+		update ordertable set ${status}=#{statusNo} where id=#{id}
+	</update>
+	<!--查询订单的支付状态  -->
+	<select id="getOrderPayStatus" resultType="int">
+		select payStatus from ordertable where id=#{id}
+	</select>
+	<!--  根据id查询订单号码-->
+	<select id="getOrderNo" resultType="java.lang.String">
+		select orderNo from ordertable where id=#{id}
+	</select>
+	<!--根据订单编号查询订单  -->
+	<select id="getOrderByOrderNo" resultType="com.ideasStudio.website.entity.Order">
+		select 	id,uid,orderNo,payStatus,outStatus,takeStatus,
+				recvName,pay,orderTime,payTime,payWay
+		from ordertable where orderNo=#{orderNo}
+	</select>
+	<!--  根据orderNo查询优惠券-->
+	<select id="getCouponsByOrderNo" resultType="java.lang.String">
+		select useCoupons from ordertable where orderNo=#{orderNo}
+	</select>
+	<!--根据优惠券查询订单  -->
+	<select id="getOrderByCouponsCode" resultType="com.ideasStudio.website.entity.Order">
+		select 	id,uid,orderNo
+		from ordertable where useCoupons=#{couponsCode}
+	</select>
+	<!--查询时间范围内 订单总额-->
+	<select id="getAllPayOrderMoney" resultType="double">
+		select sum(pay) from ordertable where payStatus=1 and payTime between #{start} and #{end}
+	</select>
+	<!--查询时间范围内已支付订单数  -->
+	<select id="getTodayOrderNum" resultType="int">
+		select count(id) from ordertable where payStatus=1 and payTime between #{start} and #{end}
+	</select>
+</mapper>

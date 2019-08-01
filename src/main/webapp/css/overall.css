@@ -1,0 +1,42 @@
+/**
+bootstrap 对fieldset边框重新定义之后，复制下面代码即可恢复原样
+ */
+
+fieldset{padding:.35em .625em .75em;margin:0 2px;border:1px solid silver}
+
+legend{padding:.5em;border:0;width:auto}
+
+a{
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 767px) and (min-width: 0px){
+    .display-pc{
+        display: none;
+    }
+    .display-phone{
+        display:initial;
+    }
+}
+@media only screen and (max-width: 2560px) and (min-width: 768px){
+    .display-pc{
+        display: initial;
+    }
+    .display-phone{
+        display:none;
+    }
+}
+
+html,body{height: 100%;width: 100%;margin:0;padding:0;}
+/*
+
+.learnmore{
+    border: 1px solid #f5f5f5;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+.learnmore:hover{
+    border-left: 2px solid #f5f5f5;
+    border-right: 2px solid #f5f5f5;
+}
+*/

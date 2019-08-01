@@ -1,0 +1,50 @@
+footer{
+    width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px 0;
+}
+#footer_left_div img{
+    margin-left: 40px;
+}
+
+footer>p{
+    text-align: center;
+}
+/* footer中大的div */
+footer>div{
+    /* 因为内容全都浮动了 为了识别高度 */
+    overflow: hidden;
+}
+/* 三个等大小的div */
+footer>div>div{
+    width: 333px;/* 1000/3 */
+    float: left;
+}
+
+#footer_center_div ul{
+    list-style-type: none;/* 去掉点 */
+    padding: 0;/* 去掉默认样式 */
+}
+#footer_center_div>ul>li{
+    float: left;
+    width: 111px;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+}
+#footer_center_div>ul>li>ul>li{
+    font-size: 12px;
+    margin: 5px 0;
+}
+#imgli{
+    position: relative;
+    left: -6px;
+}
+#footer_right_div div{
+    width: 166px;
+    float: left;
+}
+#footer_right_div div h3{
+    margin: 0 0 10px 0; /* 距离下面10px */
+}

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en" class="no-touch js">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="stylesheet"href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>订单结算</title>
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/png" href="../favicon.ico" sizes="16x16">
+<link rel="icon" type="image/png" href="../favicon.ico" sizes="32x32">
+<link rel="stylesheet" href="../css/item.css"/>
+<link rel="stylesheet" type="text/css"href="../css/global_components.css">
+<link rel="stylesheet" type="text/css"href="../css/area_cart-checkout.css">
+<script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?462aa51b3531124fa543493a84dca9c9"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script>
+</head>
+<body class="b-page b-page_checkout">
+	<header class="b-checkout-header">
+		<div class="b-checkout-header__inner">
+			<div class="l-header-footer-checkout">
+				<div class="l-header-footer-checkout__left">
+					<div class="l-header-utility-menu"></div>
+				</div>
+				<div class="l-header-footer-checkout__middle">
+					<a class="b-logo" href="../index.html" title="FatFace">
+						<div
+							class="b-content-asset b-content-asset_site-logo content-asset">
+							<img alt="" src="../images/nav/logo01.png"
+								style="width: 100px; height: 30px">
+						</div>
+					</a>
+				</div>
+				<div class="l-header-footer-checkout__right b-hide_sm">
+					<div class="l-header-utility-menu">
+						<div
+							class="b-content-asset b-content-asset_checkout-header-phone-number-asset content-asset">
+							<div class="b-checkout-header-footer-button">
+								<svg width="20" height="20"
+									class="b-checkout-header-footer-button__ico b-hide_sm">
+								</svg>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main id="main" class="l-page l-page_checkout">
+	<div id="primary" class="l-page__content">
+
+
+		<ul class="b-checkout-progress-bar">
+			<li class="b-checkout-progress-bar__item">
+				<div
+					class="b-checkout-progress-bar__button b-checkout-progress-bar__button_active">
+					<span class="b-checkout-progress-bar__step">1</span> <span
+						class="b-checkout-progress-bar__text">快递</span>
+				</div>
+
+			</li>
+			<li class="b-checkout-progress-bar__item">
+				<div class="b-checkout-progress-bar__button ">
+					<span class="b-checkout-progress-bar__step">2</span> <span
+						class="b-checkout-progress-bar__text">确认并支付</span>
+				</div>
+
+			</li>
+		</ul>
+		<div class="b-delivery-methods">
+			<h2 class="b-delivery-methods__title">请填写并核对订单信息</h2>
+		</div>
+		<div class="l-page-checkout">
+			<div class="l-page-checkout__content m-cmp_loaded" data-cmp="tabs">
+				<div id="tabs"
+					class="b-tabs-boxed b-tabs-boxed_delivery b-checkout-text">
+					<div id="tab-home-deliveries"
+						class="b-tabs-boxed__item js-tabtitle js-homedelivery-tab is-active"
+						data-content="js-homedelivery-content">
+						<div class="b-delivery-flow">
+							<img class="b-delivery-flow__icon" alt="Home Delivery"
+								src="../images/nav/delivery.svg" width="60" height="60">
+							<h3 class="b-delivery-flow__title h4">快递到家</h3>
+							<div class="js-shipping-methods">
+								<label
+									class="b-radio__label b-shipping-methods__label js-shipping-method-label"
+									for="shipping-method-overseasUSD"> 
+									<div class="b-shipping-methods__item">
+										<div
+											class="l-key-value l-key-value_flow b-shipping-methods__type">
+											<span class="l-key-value__key b-shipping-methods__sub-title">免运费</span>
+											<div class="l-key-value__value"></div>
+										</div>
+									</div>
+								</label>
+							</div>
+						</div>
+						<i class="b-tabs-boxed__border"></i>
+
+					</div>
+				</div>
+
+
+				<div id="tab-content" class="js-page-context"
+					data-page-context="{&quot;page&quot; : &quot;shipping&quot;}">
+					<div id="tab-content-home-deliveries"
+						class="js-tabcontent js-homedelivery-content is-active">
+						<div id="addressSelect" class="form-group" style="display: block;">
+							<label for="name">
+								<h4>选择收货地址：</h4>
+							</label> <select id="addressList" class="form-control">
+								<option></option>
+							</select>
+						</div>
+						<div style="display: block;" id="addNewAddress">
+							<a href="usercenter.html">添加新的收货地址</a>
+						</div>
+
+						<div class="js-address-fields">
+							<form id="dwfrm_singleshipping_shippingAddress"
+								class="b-form b-checkout-text b-checkout-shipping js-checkout-form js-shipping-from js-address-form is-active"
+								novalidate="novalidate" style="display: none;">
+								<fieldset>
+									<legend class="h3">
+										填写收货信息<span style="font-size: 10px">(*号必填)</span>
+									</legend>
+								</fieldset>
+								<div class="b-hide js-dynamic-fields"
+									data-dynamic-fields="{&quot;def&quot;:{&quot;states&quot;:{&quot;type&quot;:&quot;input&quot;,&quot;displayName&quot;:&quot;State / Province (optional)&quot;,&quot;fieldclass&quot;:&quot;js-validate-hidden js-string-field-validations&quot;,&quot;required&quot;:false},&quot;address1&quot;:{&quot;fieldclass&quot;:&quot;js-validate-hidden js-customeraddress&quot;,&quot;regexp&quot;:&quot;^[0-9a-zA-Z\\u00C0-\\u017F\\!\\@\\#\\￥\\%\\^\\&amp;\\*\\&#39;\\-\\.\\,\\\\/ ]{2,50}￥&quot;,&quot;required&quot;:true},&quot;address2&quot;:{&quot;fieldclass&quot;:&quot;js-customeraddress&quot;,&quot;regexp&quot;:&quot;^[0-9a-zA-Z\\u00C0-\\u017F\\!\\@\\#\\￥\\%\\^\\&amp;\\*\\&#39;\\-\\.\\,\\\\/ ]{2,50}￥&quot;},&quot;city&quot;:{&quot;displayName&quot;:&quot;City&quot;,&quot;fieldclass&quot;:&quot;js-validate-hidden js-string-field-validations&quot;,&quot;regexp&quot;:&quot;^[a-zA-Z\\u00C0-\\u017F \\-\\.\\&#39;]{2,50}￥&quot;,&quot;required&quot;:true},&quot;phone&quot;:{&quot;regexp&quot;:&quot;^\\+?[0-9 ()-]{1,20}￥&quot;,&quot;required&quot;:true,&quot;type&quot;:&quot;tel&quot;},&quot;postal&quot;:{&quot;displayName&quot;:&quot;Postal code (optional)&quot;,&quot;fieldclass&quot;:&quot;js-validate-hidden&quot;,&quot;regexp&quot;:&quot;^[\\w- ]{1,8}￥&quot;,&quot;required&quot;:false},&quot;postCodeAnywhere&quot;:{&quot;fieldclass&quot;:&quot;b-text-input_theme-grey js-pca-input&quot;},&quot;firstName&quot;:{&quot;regexp&quot;:&quot;^[a-zA-Z\\u00C0-\\u017F \\-\\.\\&#39;]{2,50}￥&quot;,&quot;required&quot;:true},&quot;lastName&quot;:{&quot;regexp&quot;:&quot;^[a-zA-Z\\u00C0-\\u017F \\-\\.\\&#39;]{2,50}￥&quot;,&quot;required&quot;:true}},&quot;US&quot;:{&quot;states&quot;:{&quot;type&quot;:&quot;select&quot;,&quot;displayName&quot;:&quot;State&quot;,&quot;required&quot;:true,&quot;options&quot;:[{&quot;label&quot;:&quot;Select...&quot;,&quot;value&quot;:&quot;&quot;},{&quot;label&quot;:&quot;Alabama&quot;,&quot;value&quot;:&quot;AL&quot;},{&quot;label&quot;:&quot;Alaska&quot;,&quot;value&quot;:&quot;AK&quot;},{&quot;label&quot;:&quot;American Samoa&quot;,&quot;value&quot;:&quot;AS&quot;},{&quot;label&quot;:&quot;Arizona&quot;,&quot;value&quot;:&quot;AZ&quot;},{&quot;label&quot;:&quot;Arkansas&quot;,&quot;value&quot;:&quot;AR&quot;},{&quot;label&quot;:&quot;California&quot;,&quot;value&quot;:&quot;CA&quot;},{&quot;label&quot;:&quot;Colorado&quot;,&quot;value&quot;:&quot;CO&quot;},{&quot;label&quot;:&quot;Connecticut&quot;,&quot;value&quot;:&quot;CT&quot;},{&quot;label&quot;:&quot;Delaware&quot;,&quot;value&quot;:&quot;DE&quot;},{&quot;label&quot;:&quot;District of Columbia&quot;,&quot;value&quot;:&quot;DC&quot;},{&quot;label&quot;:&quot;Florida&quot;,&quot;value&quot;:&quot;FL&quot;},{&quot;label&quot;:&quot;Georgia&quot;,&quot;value&quot;:&quot;GA&quot;},{&quot;label&quot;:&quot;Guam&quot;,&quot;value&quot;:&quot;GU&quot;},{&quot;label&quot;:&quot;Hawaii&quot;,&quot;value&quot;:&quot;HI&quot;},{&quot;label&quot;:&quot;Idaho&quot;,&quot;value&quot;:&quot;ID&quot;},{&quot;label&quot;:&quot;Illinois&quot;,&quot;value&quot;:&quot;IL&quot;},{&quot;label&quot;:&quot;Indiana&quot;,&quot;value&quot;:&quot;IN&quot;},{&quot;label&quot;:&quot;Iowa&quot;,&quot;value&quot;:&quot;IA&quot;},{&quot;label&quot;:&quot;Kansas&quot;,&quot;value&quot;:&quot;KS&quot;},{&quot;label&quot;:&quot;Kentucky&quot;,&quot;value&quot;:&quot;KY&quot;},{&quot;label&quot;:&quot;Louisiana&quot;,&quot;value&quot;:&quot;LA&quot;},{&quot;label&quot;:&quot;Maine&quot;,&quot;value&quot;:&quot;ME&quot;},{&quot;label&quot;:&quot;Maryland&quot;,&quot;value&quot;:&quot;MD&quot;},{&quot;label&quot;:&quot;Massachusetts&quot;,&quot;value&quot;:&quot;MA&quot;},{&quot;label&quot;:&quot;Michigan&quot;,&quot;value&quot;:&quot;MI&quot;},{&quot;label&quot;:&quot;Minnesota&quot;,&quot;value&quot;:&quot;MN&quot;},{&quot;label&quot;:&quot;Mississippi&quot;,&quot;value&quot;:&quot;MS&quot;},{&quot;label&quot;:&quot;Missouri&quot;,&quot;value&quot;:&quot;MO&quot;},{&quot;label&quot;:&quot;Montana&quot;,&quot;value&quot;:&quot;MT&quot;},{&quot;label&quot;:&quot;Nebraska&quot;,&quot;value&quot;:&quot;NE&quot;},{&quot;label&quot;:&quot;Nevada&quot;,&quot;value&quot;:&quot;NV&quot;},{&quot;label&quot;:&quot;New Hampshire&quot;,&quot;value&quot;:&quot;NH&quot;},{&quot;label&quot;:&quot;New Jersey&quot;,&quot;value&quot;:&quot;NJ&quot;},{&quot;label&quot;:&quot;New Mexico&quot;,&quot;value&quot;:&quot;NM&quot;},{&quot;label&quot;:&quot;New York&quot;,&quot;value&quot;:&quot;NY&quot;},{&quot;label&quot;:&quot;North Carolina&quot;,&quot;value&quot;:&quot;NC&quot;},{&quot;label&quot;:&quot;North Dakota&quot;,&quot;value&quot;:&quot;ND&quot;},{&quot;label&quot;:&quot;Ohio&quot;,&quot;value&quot;:&quot;OH&quot;},{&quot;label&quot;:&quot;Oklahoma&quot;,&quot;value&quot;:&quot;OK&quot;},{&quot;label&quot;:&quot;Oregon&quot;,&quot;value&quot;:&quot;OR&quot;},{&quot;label&quot;:&quot;Pennsylvania&quot;,&quot;value&quot;:&quot;PA&quot;},{&quot;label&quot;:&quot;Puerto Rico&quot;,&quot;value&quot;:&quot;PR&quot;},{&quot;label&quot;:&quot;Rhode Island&quot;,&quot;value&quot;:&quot;RI&quot;},{&quot;label&quot;:&quot;South Carolina&quot;,&quot;value&quot;:&quot;SC&quot;},{&quot;label&quot;:&quot;South Dakota&quot;,&quot;value&quot;:&quot;SD&quot;},{&quot;label&quot;:&quot;Tennessee&quot;,&quot;value&quot;:&quot;TN&quot;},{&quot;label&quot;:&quot;Texas&quot;,&quot;value&quot;:&quot;TX&quot;},{&quot;label&quot;:&quot;Utah&quot;,&quot;value&quot;:&quot;UT&quot;},{&quot;label&quot;:&quot;Vermont&quot;,&quot;value&quot;:&quot;VT&quot;},{&quot;label&quot;:&quot;Virgin Islands&quot;,&quot;value&quot;:&quot;VI&quot;},{&quot;label&quot;:&quot;Virginia&quot;,&quot;value&quot;:&quot;VA&quot;},{&quot;label&quot;:&quot;Washington&quot;,&quot;value&quot;:&quot;WA&quot;},{&quot;label&quot;:&quot;West Virginia&quot;,&quot;value&quot;:&quot;WV&quot;},{&quot;label&quot;:&quot;Wisconsin&quot;,&quot;value&quot;:&quot;WI&quot;},{&quot;label&quot;:&quot;Wyoming&quot;,&quot;value&quot;:&quot;WY&quot;}],&quot;fieldclass&quot;:&quot;js-validate-hidden&quot;},&quot;city&quot;:{&quot;displayName&quot;:&quot;City&quot;,&quot;required&quot;:true,&quot;regexp&quot;:&quot;^[a-zA-Z\\u00C0-\\u017F \\-\\.\\&#39;]{2,50}￥&quot;,&quot;fieldclass&quot;:&quot;js-validate-hidden js-string-field-validations&quot;},&quot;phone&quot;:{&quot;type&quot;:&quot;tel&quot;,&quot;required&quot;:true,&quot;regexp&quot;:&quot;^(\\+1)*(?=.{10,19}￥)([- ()]*\\d[- ()]*){10}￥&quot;,&quot;example&quot;:&quot;Example: +1 234 567 8901&quot;},&quot;postal&quot;:{&quot;displayName&quot;:&quot;ZIP code&quot;,&quot;required&quot;:true,&quot;regexp&quot;:&quot;^(?!0{5}-0{4}￥)\\d{5}-\\d{4}￥|^(?!0*￥)\\d{5}￥&quot;,&quot;fieldclass&quot;:&quot;js-validate-hidden&quot;},&quot;address1&quot;:{&quot;required&quot;:true,&quot;regexp&quot;:&quot;^[0-9a-zA-Z\\u00C0-\\u017F\\!\\@\\#\\￥\\%\\^\\&amp;\\*\\&#39;\\-\\.\\,\\\\/ ]{2,50}￥&quot;,&quot;fieldclass&quot;:&quot;js-validate-hidden js-customeraddress&quot;},&quot;address2&quot;:{&quot;regexp&quot;:&quot;^[0-9a-zA-Z\\u00C0-\\u017F\\!\\@\\#\\￥\\%\\^\\&amp;\\*\\&#39;\\-\\.\\,\\\\/ ]{2,50}￥&quot;,&quot;fieldclass&quot;:&quot;js-customeraddress&quot;},&quot;firstName&quot;:{&quot;required&quot;:true,&quot;regexp&quot;:&quot;^[a-zA-Z\\u00C0-\\u017F \\-\\.\\&#39;]{2,50}￥&quot;,&quot;fieldclass&quot;:&quot;js-string-field-validations&quot;},&quot;lastName&quot;:{&quot;required&quot;:true,&quot;regexp&quot;:&quot;^[a-zA-Z\\u00C0-\\u017F \\-\\.\\&#39;]{2,50}￥&quot;,&quot;fieldclass&quot;:&quot;js-string-field-validations&quot;}},&quot;GB&quot;:{&quot;states&quot;:{&quot;type&quot;:&quot;input&quot;,&quot;displayName&quot;:&quot;County (optional)&quot;,&quot;required&quot;:false,&quot;regexp&quot;:&quot;^[a-zA-Z\\u00C0-\\u017F \\-\\.\\&#39;]{2,50}￥&quot;,&quot;fieldclass&quot;:&quot;js-validate-hidden js-string-field-validations&quot;},&quot;city&quot;:{&quot;displayName&quot;:&quot;Town&quot;,&quot;required&quot;:true,&quot;regexp&quot;:&quot;^[a-zA-Z\\u00C0-\\u017F \\-\\.\\&#39;]{2,50}￥&quot;,&quot;fieldclass&quot;:&quot;js-validate-hidden js-string-field-validations&quot;},&quot;phone&quot;:{&quot;type&quot;:&quot;tel&quot;,&quot;required&quot;:true,&quot;regexp&quot;:&quot;^(?=.{11,20}￥)([- ()]*\\d[- ()]*){11}￥&quot;,&quot;example&quot;:&quot;Example: 123 4567 8901&quot;},&quot;postal&quot;:{&quot;displayName&quot;:&quot;Postcode&quot;,&quot;required&quot;:true,&quot;regexp&quot;:&quot;^GIR[ ]?0AA|((AB|AL|B|BA|BB|BD|BF|BH|BL|BN|BR|BS|BT|CA|CB|CF|CH|CM|CO|CR|CT|CV|CW|DA|DD|DE|DG|DH|DL|DN|DT|DY|E|EC|EH|EN|EX|FK|FY|G|GL|GY|GU|HA|HD|HG|HP|HR|HS|HU|HX|IG|IM|IP|IV|JE|KA|KT|KW|KY|L|LA|LD|LE|LL|LN|LS|LU|M|ME|MK|ML|N|NE|NG|NN|NP|NR|NW|OL|OX|PA|PE|PH|PL|PO|PR|RG|RH|RM|S|SA|SE|SG|SK|SL|SM|SN|SO|SP|SR|SS|ST|SW|SY|TA|TD|TF|TN|TQ|TR|TS|TW|UB|W|WA|WC|WD|WF|WN|WR|WS|WV|YO|ZE)(\\d[\\dA-Z]?[ ]?\\d[ABD-HJLN-UW-Z]{2}))|BFPO[ ]?\\d{1,4}￥&quot;,&quot;example&quot;:&quot;Example : SW42 4RG&quot;,&quot;fieldclass&quot;:&quot;js-validate-hidden&quot;},&quot;address1&quot;:{&quot;required&quot;:true,&quot;regexp&quot;:&quot;^[0-9a-zA-Z\\u00C0-\\u017F\\!\\@\\#\\￥\\%\\^\\&amp;\\*\\&#39;\\-\\.\\,\\\\/ ]{2,50}￥&quot;,&quot;fieldclass&quot;:&quot;js-validate-hidden js-customeraddress&quot;},&quot;address2&quot;:{&quot;regexp&quot;:&quot;^[0-9a-zA-Z\\u00C0-\\u017F\\!\\@\\#\\￥\\%\\^\\&amp;\\*\\&#39;\\-\\.\\,\\\\/ ]{2,50}￥&quot;,&quot;fieldclass&quot;:&quot;js-customeraddress&quot;},&quot;firstName&quot;:{&quot;required&quot;:true,&quot;regexp&quot;:&quot;^[a-zA-Z\\u00C0-\\u017F \\-\\.\\&#39;]{2,50}￥&quot;,&quot;fieldclass&quot;:&quot;js-string-field-validations&quot;},&quot;lastName&quot;:{&quot;required&quot;:true,&quot;regexp&quot;:&quot;^[a-zA-Z\\u00C0-\\u017F \\-\\.\\&#39;]{2,50}￥&quot;,&quot;fieldclass&quot;:&quot;js-string-field-validations&quot;}}}"></div>
+								<div class="b-form-row b-form-row_auto-width required title"
+									aria-required="true">
+									<div class="b-form-row__holder">
+										<div class="b-form-row__label"></div>
+										<div class="b-form-row__input">
+											<div class="b-select">
+												<div class="recipients">
+													<span class="b-label__require">*</span> <span
+														class="b-form-row__label" style="padding-right: 24px;">收货人：</span>
+													<input
+														class="b-text-input js-string-field-validations  required is-invalid"
+														type="text" name="recvName" id="recvName"
+														style="border-color: #DDDDDD;" />
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="b-form-row  required firstName"
+										aria-required="true">
+										<div class="b-form-row__holder" style="top: 13px;">
+											<div data-toggle="distpicker" class="b-form-row__label">
+												<span class="b-label__require">*</span> <span class="kuan"
+													style="padding-right: 30px;">省&nbsp;&nbsp;份：</span>
+												<div style="display: inline;">
+													<select style="border-color: #DDDDDD; width: 170px"
+														id="province"
+														class="b-select__select  required is-invalid"
+														name="recvProvince" data-province="---- 选择省 ----"
+														id="recvProvince" style="width: 150px;">
+														<option value="0">---请选择---</option>
+													</select> 城市：<select style="border-color: #DDDDDD; width: 170px"
+														id="city" class="b-select__select  required is-invalid"
+														name="recvCity" data-city="---- 选择市 ----" id="recvCity"
+														style="width: 150px;">
+														<option value="0">---请选择---</option>
+													</select> 区/县：<select style="border-color: #DDDDDD; width: 170px"
+														id="area" class="b-select__select  required is-invalid"
+														name="recvArea" data-district="---- 选择区 ----"
+														id="recvArea" style="width: 150px;">
+														<option value="0">---请选择---</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="b-form-row  required lastName" aria-required="true">
+										<div class="b-form-row__holder">
+											<div class="b-form-row__label">
+												<span class="b-label__require">*</span> <span class="kuan"
+													style="padding-right: 7px">详细地址：</span>
+												<textarea style="border-color: #DDDDDD;"
+													class="b-text-input s-string-field-validations  required is-invalid"
+													name="recvAddress" id="recAddress" cols="60" rows="3"
+													placeholder="建议您如实填写详细收货地址"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="b-form-row  required country" aria-required="true">
+										<div class="b-form-row__holder">
+											<div class="b-form-row__label">
+												<span class="b-label__require">*</span> <span
+													class="b-label__inner" style="padding-right: 8px">手机号码：</span>
+												<input
+													class="b-text-input b-text-input_theme-grey js-pca-input valid"
+													type="tel" id="receiverMobile" name="recvPhone"
+													onblur="phoneReg(this)" /> 固定电话：<input
+													class="b-text-input b-text-input_theme-grey js-pca-input valid"
+													type="text" name="recvTel" id="receiverPhone" />
+											</div>
+										</div>
+									</div>
+									<div class="b-form-row  postCodeAnywhere">
+										<div class="b-form-row__holder">
+											<!-- <div class="b-form-row__label">
+<label class="b-label " for="dwfrm_singleshipping_shippingAddress_addressFields_postCodeAnywhere">
+<span class="b-label__inner">邮政编码：</span></label>
+</div>
+<div class="b-form-row__input">
+<input class="b-text-input b-text-input_theme-grey js-pca-input valid" type="text" id="dwfrm_singleshipping_shippingAddress_addressFields_postCodeAnywhere" name="dwfrm_singleshipping_shippingAddress_addressFields_postCodeAnywhere" value="" minlength="0" maxlength="50" placeholder="" autocomplete="false"> -->
+											<div class="b-form-row__label">
+												<span class="b-label__inner">&nbsp;</span> <span
+													style="padding-right: 17px;">邮政编码：</span>&nbsp;<input
+													class="b-text-input b-text-input_theme-grey js-pca-input valid"
+													type="text" name="recvZip" />
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="b-form-row__holder">
+									<!-- <input class="b-checkbox__input " type="checkbox" id="dwfrm_singleshipping_shippingAddress_addToAddressBook" name="dwfrm_singleshipping_shippingAddress_addToAddressBook" value="true">
+<label class="b-label b-checkbox__label" for="dwfrm_singleshipping_shippingAddress_addToAddressBook"><span class="b-label__inner">保存收货地址</span></label> -->
+									<button type="button" class="btn" id="addDefault"
+										style="background-color: #696969; color: white;">使用并保存地址</button>
+									<input type="hidden" id="addressId" value="">
+								</div>
+
+							</form>
+
+
+
+
+
+
+							<div class="b-form-row  required emailAddress is-hidden"
+								aria-required="true">
+								<div class="b-form-row__holder">
+									<div class="b-form-row__label">
+										<label class="b-label "
+											for="dwfrm_billing_billingAddress_email_emailAddress"><span
+											class="b-label__require">*</span><span class="b-label__inner">Email</span></label>
+									</div>
+									<div class="b-form-row__input">
+										<input
+											class="is-hidden js-validate-hidden js-checkout-email email  required valid"
+											type="hidden"
+											id="dwfrm_billing_billingAddress_email_emailAddress"
+											name="dwfrm_billing_billingAddress_email_emailAddress"
+											value="evelyn_rock81@yahoo.com" aria-required="true">
+									</div>
+								</div>
+							</div>
+							<div
+								class="b-form-row  addToAddressBook b-form-row_label-inline b-checkbox">
+							</div>
+						</div>
+
+						<div id="shipping-method-list">
+							<fieldset class="b-shipping-methods b-checkout-text">
+								<legend class="b-shipping-methods__title h3"> 是否需要礼品卡 </legend>
+								<div class="b-radio b-radio_boxed b-shipping-methods__content">
+									<label
+										class=" b-shipping-methods__label js-shipping-method-label">
+										<i class="b-radio__border b-shipping-methods__border"></i>
+										<div class="b-shipping-methods__item">
+											<div
+												class="l-key-value l-key-value_flow b-shipping-methods__type">
+												<span class="l-key-value__key b-shipping-methods__sub-title">
+													请输入您需要制作的礼品卡文字内容 </span>
+
+											</div>
+											<div
+												class="l-key-value l-key-value_flow b-shipping-methods__promos">
+												<textarea id="giftCard" rows="" cols=""
+													placeholder="请控制在200字以内"
+													style="width: 676px; height: 80px; border: white"></textarea>
+												<div class="l-key-value__value">
+													<ul class="b-shipping-methods__shipping-promos">
+													</ul>
+												</div>
+											</div>
+										</div>
+									</label>
+								</div>
+							</fieldset>
+						</div>
+						</fieldset>
+						<div class="b-hide_sm b-hide_md">
+							<br> <input type="hidden" name="csrf_token"
+								value="C_7zaUQhJ42J_IV0ZZ1K3PGYfnlcmSEp34rRnFGR5rU_2pd3WPQ5jYmDTlc3Z6SlCHzaYANG2MaADlsARTQncx9EQJ9y5Gss3tt7sEVv4gAcsPEHe_wNoPWUW4etlYsD0KtCaSC0rpaq_vv_EE8SmaAvwdWPitNtP_Macivlm0E3BLOrq8o">
+							<!-- <button type="button" class="btn btn-default btn-lg" name="dwfrm_singleshipping_shippingAddress_save" value="Proceed to payment" style="background-color:#DDDDDD;width: 500px">
+<span>继续支付</span> 
+							</button>-->
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="l-page-checkout__aside">
+				<div class="l-page-checkout__aside-inner js-checkout-summary">
+					<form name="checkout-email-form" id="checkout-email-form"
+						class="js-checkout-summary-form" novalidate="novalidate">
+						<div class="b-order-totals b-order-totals_checkout">
+							<div class="l-page-checkout__aside-item-right">
+								<div class="js-summary-totals">
+									<table class="b-order-totals__table">
+										<tbody>
+											<tr
+												class="l-key-value l-key-value_order-summary b-order-totals__subtotal">
+												<td class="l-key-value__key l-key-value__key_uppercase">总计</td>
+												<td class="l-key-value__value js-subtotal-value"
+													id="cartMoney">￥00.00</td>
+											</tr>
+											<!-- <tr
+												class="l-key-value l-key-value_order-summary b-order-totals__shipping">
+												<td class="l-key-value__key">其他费用</td>
+												<td class="l-key-value__value">￥0.00</td>
+											</tr>
+											<tr
+												class="l-key-value l-key-value_order-summary b-order-totals__sales-tax">
+												<td class="l-key-value__key">发票税</td>
+												<td class="l-key-value__value">￥0.00</td>
+											</tr>
+											<tr
+												class="l-key-value l-key-value_order-summary b-order-total__total">
+												<td class="l-key-value__key">
+													<div class="l-key-value__key_uppercase">总价</div>
+													<div class="l-key-value__key_description"></div>
+												</td>
+												<td
+													class="l-key-value__value b-order-total__total-value js-total-value">
+													￥00.00</td>
+											</tr> -->
+										</tbody>
+									</table>
+								</div>
+								<div class="b-order-totals__proceed-to-payment">
+									<input type="hidden" name="csrf_token"
+										value="HFS5ZwfyPE_9C1IZkneqsWz4mrm2u39gHhTZdwpPOBDrIhwnI2osnVIFvytz15W66nEc8bnN4Qcc7DCW7oVDsUIv2AERISe44rNCbRfvB711R2qWvgrT42UA7dXfahvZDvjMGAF0QgNzWkK0iDFGHH4iii0mvjcHJvdz8BSjEObRZphp8PQ">
+									<button type="button" id="createOrder"
+										class="b-button b-button_middle b-button_black js-submit-checkout">
+										<span>继续支付</span>
+									</button>
+								</div>
+							</div>
+							<div class="l-page-checkout__aside-item-left">
+								<div class="b-asset b-asset_payment-content-slot">
+									<div class="b-payment-info b-payment-info_cart">
+										<h2 class="b-payment-info__title">我们支持:</h2>
+										<div class="b-payment-info__list">
+											<div class="b-payment-info__item b-payment-info__visa">
+												<img alt="" src="../images/nav/alipay.png">
+											</div>
+											<div class="b-payment-info__item b-payment-info__visa-debit" style="margin-left: 80px">
+												<img alt="" src="../images/nav/weixin.jpg">
+											</div>
+											<!-- <div class="b-payment-info__item b-payment-info__master"></div>
+											<div class="b-payment-info__item b-payment-info__paypal"></div>
+											<div class="b-payment-info__item b-payment-info__express"></div>
+											<div class="b-payment-info__item b-payment-info__diners-club"></div>
+											<div class="b-payment-info__item b-payment-info__discover"></div>
+											<div class="b-payment-info__item b-payment-info__apple"></div> -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="l-page-checkout__aside-item-left">
+							<div class="b-order-notifications">
+								<div class="b-order-notifications__title">如您有任何疑问：</div>
+								<div class="b-order-notifications__email">请及时联系客服或致电
+									13509245237</div>
+								<a href="cart.html"
+									class="b-order-notifications__items-in-your-bag js-mini-cart-link-checkout"
+									style=" text-decoration: none;">
+									返回购物车 </a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script>
+			window.Countries = {
+				"error" : [ "Error: TypeError: Cannot read property \"label\" from undefined" ]
+			};
+		</script>
+	</div>
+	</main>
+		<footer class="b-footer">
+		<div class="b-footer-top">
+			<div class="b-footer-top__inner">
+
+				<nav class="l-footer-bottom b-footer-nav m-cmp_loaded"
+					data-cmp="accordion"
+					data-accordion="{ &quot;mode&quot;:&quot;closeAnother&quot;, &quot;device&quot;: [&quot;small&quot;] }">
+					<div class="l-footer-bottom__item b-footer-nav__item">
+						<div
+							class="b-content-asset b-content-asset_footer-support content-asset">
+							<h3
+								class="b-footer-nav__title js-accordion-head js-head-initialized">
+								爱得司
+								<svg width="16" height="16" class="b-footer-nav__control"
+									focusable="false" role="img">
+										<use xlink:href="#icon-arrow-right"></use>
+									</svg>
+							</h3>
+							<ul class="b-footer-nav__list js-accordion-content">
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="./brandstory.html"
+									title="品牌故事">品牌故事</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="./consociation.html" 
+									title="品牌合作">品牌合作</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="./usercenter.html"
+									title="注册">注册会员</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="./joinus.html"
+									title="加入我们">加入我们</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="l-footer-bottom__item b-footer-nav__item">
+						<div
+							class="b-content-asset b-content-asset_footer-service content-asset">
+							<h3
+								class="b-footer-nav__title js-accordion-head js-head-initialized">
+								常见问题
+								<svg width="16" height="16" class="b-footer-nav__control"
+									focusable="false" role="img">
+										<use xmlns:xlink="http://www.w3.org/1999/xlink"
+										xlink:href="#icon-arrow-right"></use>
+									</svg>
+							</h3>
+							<ul class="b-footer-nav__list js-accordion-content">
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="../store/FAQ.html"
+									title="常见问题">FAQ</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="packaging.html" title="产品包装">产品包装</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="privacy.html" title="隐私政策">隐私政策</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="salesreturn.html" title="提货政策">退货政策</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="l-footer-bottom__item b-footer-nav__item">
+						<div
+							class="b-content-asset b-content-asset_footer-about content-asset">
+							<h3
+								class="b-footer-nav__title js-accordion-head js-head-initialized">
+								关于我们</h3>
+							<ul class="b-footer-nav__list js-accordion-content">
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="quality.html" title="品质保障">品质保障</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="technology.html" title="产品科技">产品科技</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="design.html" title="产品设计">产品设计</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="copyright.html" title="产品版权">产品版权</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="l-footer-bottom__item b-footer-nav__item">
+						<div
+							class="b-content-asset b-content-asset_footer-account content-asset">
+							<h3
+								class="b-footer-nav__title js-accordion-head js-head-initialized">
+								联系我们
+								<svg width="16" height="16" class="b-footer-nav__control"
+									role="presentation">
+										<use xmlns:xlink="http://www.w3.org/1999/xlink"
+										xlink:href="#icon-arrow-right"></use>
+									</svg>
+							</h3>
+							<ul class="b-footer-nav__list js-accordion-content">
+								<li class="b-footer-nav__list-item"> 
+									<div class="text">
+										<p>东莞市虎门镇莞太路378号</p>
+									</div></li>
+								<li class="b-footer-nav__list-item"> 
+									<div class="text">
+										<p>0769-85519158</p>
+									</div></li>
+								<li class="b-footer-nav__list-item"> 
+									<div class="text">
+										<p>info@ideas-tudio.com</p>
+									</div></li>
+								<li class="b-footer-nav__list-item"> 
+									<div class="text">
+										<p>周一至周六 9:00-18:00</p>
+									</div></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+		 <div class="b-footer-bottom">
+        <div class="b-footer-bottom__inner">
+            <nav class="b-footer-legal m-cmp_loaded" data-cmp="accordion" data-accordion="{ &quot;mode&quot;:&quot;closeAnother&quot;, &quot;device&quot;: [&quot;small&quot;] }">
+                <div class="b-content-asset b-content-asset_footer-legal content-asset">
+                    <div class="b-footer-legal__inner">
+                        <nav class="b-footer-legal__content js-accordion-content">
+                            <ul class="b-footer-legal__list">
+                                <li class="b-footer-legal__item">
+                                    <i class="icon icon-ebs1"></i>
+                                    <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备16052339号-2</a>
+                                </li>
+                                <li class="b-footer-legal__item">
+                                    <i class="icon icon-ebs2"></i>
+                                    <a href="http://beian.gov.cn/portal/registerSystemInfo" target="_blank">粤公网安备：44190002003752号</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </nav>
+            <div class="b-footer-copyright">
+                <div class="b-content-asset b-content-asset_footer-copyright content-asset">
+                     IDEAS-TUDIO
+                </div>
+            </div>
+        </div>
+    </div>
+		
+	</footer>
+	<script src="../js/jquery-2.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+			crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../js/libs.min.js"></script>
+	<script>
+		(function () {
+			window.Resources = {
+				"VIEWPORT_SMALL_MIN_WIDTH": "320",
+				"VIEWPORT_SMALL_MAX_WIDTH": "767",
+			};
+			window.Urls = {"cookieHint": "",};
+			window.SitePreferences = {};
+		}());
+		(function () {
+			window.SessionAttributes = {"digitalUserData": {"userData": {}}};
+			window.User = {"zip": null, "storeId": null, "isAuthenticated": false};
+		}());
+		var pageContext = {}, digitalData = {}, meta = "", keywords = "";
+	</script>
+	<script src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/login.js"></script>
+	<script type="text/javascript" src="../js/district.js"></script>
+	<script type="text/javascript" src="../js/address.js"></script>
+</body></html>

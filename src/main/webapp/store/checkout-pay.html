@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en" class="no-touch js">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>确认支付</title>
+<link rel="icon" type="image/png" href="../favicon.ico" sizes="16x16">
+<link rel="icon" type="image/png" href="../favicon.ico" sizes="32x32">
+<link rel="stylesheet" type="text/css"href="../css/global_components.css">
+<link rel="stylesheet" type="text/css"href="../css/area_cart-checkout.css">
+<link rel="stylesheet" type="text/css" href="../css/item.css">
+<script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?462aa51b3531124fa543493a84dca9c9"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script>
+<body class="b-page b-page_checkout">
+	<header class="b-checkout-header">
+		<div class="b-checkout-header__inner">
+			<div class="l-header-footer-checkout">
+				<div class="l-header-footer-checkout__left">
+					<div class="l-header-utility-menu"></div>
+				</div>
+				<div class="l-header-footer-checkout__middle">
+					<a class="b-logo" href="../index.html" title="IDEDS-STUDIO">
+						<div class="b-content-asset b-content-asset_site-logo content-asset">
+							<img alt="" src="../images/nav/logo01.png"
+								style="width: 100px; height: 30px">
+						</div>
+					</a>
+				</div>
+				<div class="l-header-footer-checkout__right b-hide_sm">
+					<div class="l-header-utility-menu">
+						<div class="b-content-asset b-content-asset_checkout-header-phone-number-asset content-asset">
+							<div class="b-checkout-header-footer-button">
+								<svg width="20" height="20"
+									 class="b-checkout-header-footer-button__ico b-hide_sm"></svg>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main id="main" class="l-page l-page_checkout">
+	<div id="primary" class="l-page__content">
+
+		<ul class="b-checkout-progress-bar">
+			<li class="b-checkout-progress-bar__item"><a
+				href="checkout.html"
+				class="b-checkout-progress-bar__button b-checkout-progress-bar__button_done">
+					<span class="b-checkout-progress-bar__step">1</span> <span
+					class="b-checkout-progress-bar__text">快递</span>
+			</a></li>
+			<li class="b-checkout-progress-bar__item">
+				<div
+					class="b-checkout-progress-bar__button b-checkout-progress-bar__button_active">
+					<span class="b-checkout-progress-bar__step">2</span> <span
+						class="b-checkout-progress-bar__text">确认支付</span>
+				</div>
+
+			</li>
+			<!-- <li class="b-checkout-progress-bar__item">
+<div class="b-checkout-progress-bar__button ">
+<span class="b-checkout-progress-bar__step">3</span>
+<span class="b-checkout-progress-bar__text">Receipt</span>
+</div>
+
+</li> -->
+		</ul>
+		<div class="l-page-checkout">
+			<div class="l-page-checkout__content" style="padding-left: 20px;">
+				<section class="b-products-table b-products-table_order-receipt">
+					<h2 class="b-products-table__caption">选购的商品</h2>
+					<table class="b-products-table__table js-cart-items"
+						id="cart-table">
+						<colgroup>
+							<col class="b-products-table__col" span="2">
+							<col class="b-products-table__col">
+							<col class="b-products-table__col" width="10%">
+							<col class="b-products-table__col" width="20px">
+						</colgroup>
+						<thead
+							class="b-products-table__section b-products-table__section_header">
+							<tr class="b-products-table__row">
+								<th class="b-products-table__cell b-products-table__cell_head"
+									scope="col" colspan="2" id="cartNum">0 件</th>
+								<th
+									class="b-products-table__cell b-products-table__cell_head b-products-table__cell_quantity"
+									scope="col">数量</th>
+								<th class="b-products-table__cell b-products-table__cell_head"
+									scope="col">小计</th>
+							</tr>
+							<tr
+								class="b-products-table__row b-products-table__row_divider-header"
+								role="presentation">
+								<td
+									class="b-products-table__cell b-products-table__cell_divider"
+									colspan="5"><i class="b-products-table__divider-header"></i></td>
+							</tr>
+						</thead>
+
+						<tbody id="orderList"
+							class="b-products-table__section b-products-table__section_content b-products-table__section_regular-items">
+							<!-- <tr class="b-products-table__row b-products-table__row_product js-cart-item ">
+								<td class="b-products-table__cell b-products-table__cell_image">
+									<a class="b-product-image__link js-thumb-link" href="#"title=""> 
+									<picture class="js-amplience-img"> 
+									<img class=" " src="../images/board/smss.jpg ">
+									</picture>
+									</a>
+								</td>
+								<td class="b-products-table__cell b-products-table__cell_details">
+									<div class="product-list-item" style="padding-left: 20px;">
+										<div class="b-product-name b-space-sm js-product-name">
+											<a class="b-product-name__link" href="#" title="">商品名称</a>
+										</div>
+										<div class="b-space-sm">
+											<span class="label b-hide">价格:</span>
+											<div class="b-price">
+												<span class="b-price__value"> <span
+													class="b-price__caption">价格：</span> <span
+													class="b-price__digit">￥55.00</span>
+												</span>
+											</div>
+										</div>
+										<div class="b-space-sm ">
+											<span class="b-price__caption">商品编号: </span> <span
+												class="b-price__digit">5052751322127</span>
+										</div>
+										<div class="b-product-variations b-product-variations_cart">
+											<ul class="b-product-variations__list">
+												<li class="b-product-variations__item js-color"><span
+													class="b-product-variations__title">边框: </span>
+													<div class="b-select b-select_inline b-select_borderless">
+														<span class="b-price__digit">有</span>
+													</div></li>
+												<li class="b-product-variations__item js-size"><span
+													class="b-product-variations__title">尺寸: </span>
+													<div class="b-select b-select_inline b-select_borderless">
+														<span class="b-price__digit">600mm*800mm</span>
+													</div></li>
+											</ul>
+										</div>
+									</div>
+								</td>
+								<td class="b-products-table__cell b-products-table__cell_quantity">
+									<div class="b-stepper b-stepper_cart">
+										<input class="b-stepper__input b-text-input js-qty-input" type="text" value="1" readonly="readonly">
+									</div>
+								</td>
+								<td class="b-products-table__cell b-products-table__cell_total">
+									<span
+									class="b-hide b-show_sm_ib b-product-variations__title b-product-variations__title_total">小计:</span>
+									<span class="b-price"> <span class="b-price__digit">￥27.50</span>
+								</span>
+								</td>
+							</tr> -->
+							<tr class="b-products-table__row b-products-table__row_divider"
+								role="presentation">
+								<td
+									class="b-products-table__cell b-products-table__cell_divider"
+									colspan="5"><i class="b-products-table__divider"></i></td>
+							</tr>
+
+							<tr class="b-products-table__row b-products-table__row_divider"
+								role="presentation">
+								<td
+									class="b-products-table__cell b-products-table__cell_divider"
+									colspan="5"><i class="b-products-table__divider"></i></td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<div class="b-checkout-billing">
+					<form action="" method="post" id="dwfrm_billing"
+						class="b-form address form-horizontal js-checkout-billing js-page-context js-checkout-form js-address-form is-active"
+						data-page-context="{&quot;page&quot; : &quot;billing&quot;}"
+						data-formupdate="dwfrm_billing_updateForm"
+						data-saveaction="dwfrm_billing_save" novalidate="novalidate">
+						<fieldset class="b-checkout-billing__address">
+							<legend class="b-wai-hide">您的收货地址</legend>
+							<p class="b-checkout-billing__title">您的收货地址:</p>
+							<div class="js-presaved-address">
+								<div class="b-mini-address__location">
+									<address class="b-mini-address__address">
+										姓名:<span id="name"></span><br>
+										省市区 :<span id="province"></span><br>
+										详细地址 :<span id="address"></span><br>
+										电话:<span id="phone"></span><br>
+									</address>
+								</div>
+							</div>
+						</fieldset>
+						<div class="b-form-caption form-caption b-hide_sm">
+							通过提交订单，您将同意爱得司的隐私政策   <a class="b-form-caption__link"
+								href="privacy.html">《隐私条款》</a>
+						</div>
+						<div class="b-form-caption form-caption b-hide_sm">
+							根据《保障资料法》(合法商业利益)，我们可使用客户资料邮寄目录、特别优惠及推广活动。如果您想改变您的偏好，请参考我们的隐私政策，这里概述了您的权利。
+							<a class="b-form-caption__link m-cmp_loaded"
+								data-cmp="dialogLink" href=""
+								data-dialogclass="b-content-article"></a>
+						</div>
+						<input type="hidden" name="csrf_token"
+							value="vpEQYZQK2gRgjDvj1F4ArBHCN8k_uAZFTy95qXGjSvIE2rMZ-Myr3ClcY2RFJhG8aYayup6pDNEbr3PT38Pp8H0c2MMOXaC9yJlh6F-fWUHuFvQFC1GYRKH7C0hWJYUfEiZxqifZje98jISXFBjXAnLzf-tyVWzokun0hHY5RpT2Yee04uE">
+
+					</form>
+				</div>
+			</div>
+			<div class="l-page-checkout__aside">
+				<div class="l-page-checkout__aside-inner js-checkout-summary">
+					<div class="b-order-totals b-order-totals_checkout">
+						<div class="l-page-checkout__aside-item-right">
+							<div class="js-summary-totals">
+								<table class="b-order-totals__table">
+									<tbody>
+										<tr
+											class="l-key-value l-key-value_order-summary b-order-totals__subtotal">
+											<td class="l-key-value__key l-key-value__key_uppercase">小计</td>
+											<td class="l-key-value__value js-subtotal-value" id="xiaoJi">￥00.00</td>
+										</tr>
+										<!-- <tr
+											class="l-key-value l-key-value_order-summary b-order-totals__shipping">
+											<td class="l-key-value__key">其他费用</td>
+											<td class="l-key-value__value">0.00</td>
+										</tr>
+										<tr
+											class="l-key-value l-key-value_order-summary b-order-totals__sales-tax">
+											<td class="l-key-value__key">发票税</td>
+											<td class="l-key-value__value">0.00</td>
+										</tr>
+										<tr
+											class="l-key-value l-key-value_order-summary b-order-total__total">
+											<td class="l-key-value__key">
+												<div class="l-key-value__key_uppercase">总价</div>
+												<div class="l-key-value__key_description"></div>
+											</td>
+											<td
+												class="l-key-value__value b-order-total__total-value js-total-value">
+												0.00</td>
+										</tr> -->
+									</tbody>
+								</table>
+							</div>
+							<div class="b-order-totals__proceed-to-payment">
+
+								<button class="b-button b-button_middle b-button_black js-submit-checkout " id="showpay">
+									<span>请选择支付方式</span>
+								</button>
+							</div>
+						</div>
+						<div class="l-page-checkout__aside-item-left" id="payway" style="display: none">
+							<div class="b-asset b-asset_payment-content-slot">
+								<div class="b-payment-info b-payment-info_cart" >
+									<form action="" id="payform" method="post"></form>
+									<div class="b-payment-info__list">
+										<div class="b-payment-info__item b-payment-info__visa">
+											<a href="javascript:pay('../pay/alipay.do?');">
+												<img alt="" src="../images/nav/alipay.png">
+											</a>
+										</div>
+										<div class="b-payment-info__item b-payment-info__visa-debit" style="margin-left: 80px">
+											<a href="javascript:pay('../pay/gowxpay.do?');">
+												<img alt="" src="../images/nav/weixin.jpg">
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="l-page-checkout__aside-item-left">
+						<div class="b-order-notifications">
+							<div class="b-order-notifications__title">如您有任何疑问：</div>
+							<div class="b-order-notifications__email">请及时联系客服或致电
+								13509245237</div>
+							<!-- <a href="cart.html"
+								class="b-order-notifications__items-in-your-bag js-mini-cart-link-checkout">
+								返回修改购物车 </a> -->
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="b-cart__continue-shopping-bottom"></div>
+	</div>
+
+	</main>
+		<footer class="b-footer">
+		<div class="b-footer-top">
+			<div class="b-footer-top__inner">
+
+				<nav class="l-footer-bottom b-footer-nav m-cmp_loaded"
+					data-cmp="accordion"
+					data-accordion="{ &quot;mode&quot;:&quot;closeAnother&quot;, &quot;device&quot;: [&quot;small&quot;] }">
+					<div class="l-footer-bottom__item b-footer-nav__item">
+						<div
+							class="b-content-asset b-content-asset_footer-support content-asset">
+							<h3
+								class="b-footer-nav__title js-accordion-head js-head-initialized">
+								爱得司
+								<svg width="16" height="16" class="b-footer-nav__control"
+									focusable="false" role="img">
+										<use xlink:href="#icon-arrow-right"></use>
+									</svg>
+							</h3>
+							<ul class="b-footer-nav__list js-accordion-content">
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="./brandstory.html"
+									title="品牌故事">品牌故事</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="./consociation.html" 
+									title="品牌合作">品牌合作</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="./usercenter.html"
+									title="注册">注册会员</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="./joinus.html"
+									title="加入我们">加入我们</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="l-footer-bottom__item b-footer-nav__item">
+						<div
+							class="b-content-asset b-content-asset_footer-service content-asset">
+							<h3
+								class="b-footer-nav__title js-accordion-head js-head-initialized">
+								常见问题
+								<svg width="16" height="16" class="b-footer-nav__control"
+									focusable="false" role="img">
+										<use xmlns:xlink="http://www.w3.org/1999/xlink"
+										xlink:href="#icon-arrow-right"></use>
+									</svg>
+							</h3>
+							<ul class="b-footer-nav__list js-accordion-content">
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="../store/FAQ.html"
+									title="常见问题">FAQ</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="packaging.html" title="产品包装">产品包装</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="privacy.html" title="隐私政策">隐私政策</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="salesreturn.html" title="提货政策">退货政策</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="l-footer-bottom__item b-footer-nav__item">
+						<div
+							class="b-content-asset b-content-asset_footer-about content-asset">
+							<h3
+								class="b-footer-nav__title js-accordion-head js-head-initialized">
+								关于我们</h3>
+							<ul class="b-footer-nav__list js-accordion-content">
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="quality.html" title="品质保障">品质保障</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="technology.html" title="产品科技">产品科技</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="design.html" title="产品设计">产品设计</a></li>
+								<li class="b-footer-nav__list-item"><a
+									class="b-footer-nav__link" href="copyright.html" title="产品版权">产品版权</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="l-footer-bottom__item b-footer-nav__item">
+						<div
+							class="b-content-asset b-content-asset_footer-account content-asset">
+							<h3
+								class="b-footer-nav__title js-accordion-head js-head-initialized">
+								联系我们
+								<svg width="16" height="16" class="b-footer-nav__control"
+									role="presentation">
+										<use xmlns:xlink="http://www.w3.org/1999/xlink"
+										xlink:href="#icon-arrow-right"></use>
+									</svg>
+							</h3>
+							<ul class="b-footer-nav__list js-accordion-content">
+								<li class="b-footer-nav__list-item"> 
+									<div class="text">
+										<p>东莞市虎门镇莞太路378号</p>
+									</div></li>
+								<li class="b-footer-nav__list-item"> 
+									<div class="text">
+										<p>0769-85519158</p>
+									</div></li>
+								<li class="b-footer-nav__list-item"> 
+									<div class="text">
+										<p>info@ideas-tudio.com</p>
+									</div></li>
+								<li class="b-footer-nav__list-item"> 
+									<div class="text">
+										<p>周一至周六 9:00-18:00</p>
+									</div></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+		 <div class="b-footer-bottom">
+        <div class="b-footer-bottom__inner">
+            <nav class="b-footer-legal m-cmp_loaded" data-cmp="accordion" data-accordion="{ &quot;mode&quot;:&quot;closeAnother&quot;, &quot;device&quot;: [&quot;small&quot;] }">
+                <div class="b-content-asset b-content-asset_footer-legal content-asset">
+                    <div class="b-footer-legal__inner">
+                        <nav class="b-footer-legal__content js-accordion-content">
+                            <ul class="b-footer-legal__list">
+                                <li class="b-footer-legal__item">
+                                    <i class="icon icon-ebs1"></i>
+                                    <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备16052339号-2</a>
+                                </li>
+                                <li class="b-footer-legal__item">
+                                    <i class="icon icon-ebs2"></i>
+                                    <a href="http://beian.gov.cn/portal/registerSystemInfo" target="_blank">粤公网安备：44190002003752号</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </nav>
+            <div class="b-footer-copyright">
+                <div class="b-content-asset b-content-asset_footer-copyright content-asset">
+                     IDEAS-TUDIO
+                </div>
+            </div>
+        </div>
+    </div>
+		
+	</footer>
+	<script src="../js/jquery-2.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+			crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../js/libs.min.js"></script>
+	<script>
+		(function () {
+			window.Resources = {
+				"VIEWPORT_SMALL_MIN_WIDTH": "320",
+				"VIEWPORT_SMALL_MAX_WIDTH": "767",
+			};
+			window.Urls = {"cookieHint": "",};
+			window.SitePreferences = {};
+		}());
+		(function () {
+			window.SessionAttributes = {"digitalUserData": {"userData": {}}};
+			window.User = {"zip": null, "storeId": null, "isAuthenticated": false};
+		}());
+		var pageContext = {}, digitalData = {}, meta = "", keywords = "";
+	</script>
+	<script src="../js/app.js"></script>
+	<script type="text/javascript">
+			function showpay(){
+					document.getElementById("payway").style.display="block";
+			}
+	</script>
+	<script type="text/javascript">
+			$(document).ready(function(e) {
+   				 $("#showpay").click(function(e) {
+     				   $("#payway").toggle();
+   				 });
+			});
+	</script>
+	<script type="text/javascript">
+		function pay(url){
+			document.getElementById("payform").action = url+window.location.search.substr(1);
+			document.getElementById("payform").submit();
+		}
+	</script>
+	<script type="text/javascript" src="../js/orderVo.js"></script>
+	</body>
+	</html>
+	
+	

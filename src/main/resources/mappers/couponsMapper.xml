@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.ideasStudio.website.mapper.CouponsMapper">
+	<!--新增优惠券  -->
+	<insert id="addCoupons"  parameterType="com.ideasStudio.website.entity.Coupons"  useGeneratedKeys="true" keyProperty="id">
+		insert into coupons(id,code,money,status) 
+		values(#{id},#{code},#{money},#{status})
+	</insert>
+	<!--查询所有优惠券  -->
+	<select id="getCoupons" resultType="com.ideasStudio.website.entity.Coupons">
+		select id,code,money,status from coupons limit #{jump},#{num}
+	</select>
+	<!-- 查询总数 -->
+	<select id="getCount" resultType="int">
+		select count(id) from coupons
+	</select>
+	<!--删除一个优惠券  -->
+	<delete id="deleteCoupons">
+		delete from coupons where id=#{id}
+	</delete>
+	<!--新增一个员工码  -->
+	<insert id="insertNewEmpCode" parameterType="com.ideasStudio.website.entity.EmpCode" useGeneratedKeys="true" keyProperty="id">
+		insert into empcode(id,name,code) 
+		values(#{id},#{name},#{code})
+	</insert>
+	<!--查询员工码  -->
+	<select id="findEmpCodeByCode" resultType="com.ideasStudio.website.entity.EmpCode">
+		select id,name,code from empcode where code=#{code}
+	</select>
+	<!--新增员工码使用记录  -->
+	<insert id="insertNewEmpCodeRecode" parameterType="com.ideasStudio.website.entity.EmpCodeRecord" useGeneratedKeys="true" keyProperty="id">
+		insert into empcode_record(id,code,usedate,money)
+		values(#{id},#{code},#{usedate},#{money})
+	</insert>
+	<resultMap type="com.ideasStudio.website.vo.EmpCodeVo" id="empCodeMap">
+		<id column="id" property="empId"/>
+		<result column="name" property="empName"/>
+		<result column="code" property="empCode"/>
+		<result column="count" property="useCount"/>
+		<result column="sum" property="money"/>
+	</resultMap>
+	<!--分页查询员工码  -->
+	<select id="getEmpCodeVoList" resultMap="empCodeMap">
+		select e.id,e.name,e.code,count(r.money) as count,sum(r.money) as sum
+		from empcode as e left join empcode_record as r
+		on e.code=r.code group by e.code limit #{jump},#{num}
+	</select>
+	<!--获取员工码数量  -->
+	<select id="getEmpCodeCount" resultType="int">
+		select count(id) from empcode
+	</select>
+	<!--删除一个员工码  -->
+	<delete id="deleteEmpCode">
+		delete from empcode where code=#{code}
+	</delete>
+	<!--删除员工码记录  -->
+	<delete id="deleteEmpCodeRecord">
+		delete from empcode_record where code=#{code}
+	</delete>
+	
+	<resultMap type="com.ideasStudio.website.vo.EmpCodeVo" id="recordMap">
+		<id column="id" property="empId"/>
+		<result column="name" property="empName"/>
+		<result column="code" property="empCode"/>
+		<result column="usedate" property="usedate"/>
+		<result column="money" property="singleMoney"/>
+	</resultMap>
+	<!--查询员工的员工码使用记录  -->
+	<select id="getOneEmpCodeRecordList" resultMap="recordMap">
+		select e.id,e.name,e.code,r.usedate,r.money
+		from empcode as e left join empcode_record as r 
+		on e.code=r.code where 
+		<choose>
+			<when test="name!=''">
+				e.name=#{name}
+			</when>
+			<otherwise>
+				e.code=#{code}
+			</otherwise>
+		</choose>
+		limit #{jump},#{num}
+	</select>
+	<!--根据姓名或者员工码查询其记录条数  -->
+	<select id="getOneEmpCodeRecordCount" resultType="int">
+		select count(e.id)
+		from empcode as e left join empcode_record as r 
+		on e.code=r.code where 
+		<choose>
+			<when test="name!=''">
+				e.name=#{name}
+			</when>
+			<otherwise>
+				e.code=#{code}
+			</otherwise>
+		</choose>
+	</select>
+	<!--查询优惠券  -->
+	<select id="findCouponsCodeByCode" resultType="com.ideasStudio.website.entity.Coupons">
+		select id,code,money,status from coupons where code=#{code}
+	</select>
+	<!--修改优惠券状态  -->
+	<update id="updateCouponsCdeStatus">
+		update coupons set status=1 where code=#{code}
+	</update>
+</mapper>

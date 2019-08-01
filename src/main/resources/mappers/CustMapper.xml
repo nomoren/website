@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.ideasStudio.website.mapper.CustMapper">
+	
+	<!--/**
+	 * 获取图形列表
+	 * @return
+	 */
+	 List<Shape> getShape(); 
+	<select id="getShape" resultType="com.ideasStudio.website.entity.Shape">
+		SELECT 
+			id,
+			shapeId,
+			shapeNo,
+			titleImgURL,
+			shapeName,
+			adjustable,
+			shapeTitle,
+			material
+		FROM
+			shape
+	</select> -->
+	
+	
+	<!-- /**
+	 * 根据对应的图形，获取到对应的url路径
+	 * @param shape	图形的ID
+	 * @return 返回查询到的对应的url路径
+	 */
+	ShapeUrl getUrl(Integer shape); -->
+	
+	<select id="getUrl" resultType="com.ideasStudio.website.entity.ShapeUrl">
+		SELECT 
+			id,
+			shapeId,
+			url
+		FROM
+			shapeurl
+		WHERE 
+			shapeId = #{shape}
+	</select>
+	
+	
+	<!-- /**
+	 * 往私人订制购物车中插入一条记录
+	 * @param cart  插入的记录
+	 * @return 返回插入的id  然后绑定到页面上，下次用户提交补全信息
+	 */
+	CustCart InsertCustCart(CustCart cart); -->
+	
+	<insert id="InsertCustCart" parameterType="com.ideasStudio.website.entity.CustCart">
+	  <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+          SELECT LAST_INSERT_ID()
+      </selectKey>
+		INSERT INTO custcart(
+			uid,
+			uuid,
+			material,
+			shapeid,
+			ordernum,
+			path,
+			createtime,
+			createuid,
+			createuuid
+			)VALUES
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+	            <choose>
+	                <when test="uid != null">
+	                    #{uid,jdbcType=VARCHAR},
+	                </when>
+	                <otherwise>
+	                    '',
+	                </otherwise>
+	            </choose>
+	            <choose>
+	                <when test="uuid != null">
+	                    #{uuid,jdbcType=VARCHAR},
+	                </when>
+	                <otherwise>
+	                    '',
+	                </otherwise>
+	            </choose>
+	            #{material},
+	            #{shapeid},
+	            #{ordernum},
+				#{path},
+				#{createtime},
+				#{createuid},
+				#{createuuid}
+       		</trim>
+	</insert>
+	
+	
+	<!-- /**
+	 * 往私人订制购物车中插入一条记录
+	 * @param cart  插入的记录
+	 * @return 返回插入的id  然后绑定到页面上，下次用户提交补全信息
+	 */
+	Integer findRecord(CustCart cart); -->
+	
+	<select id="findRecord" resultType="com.ideasStudio.website.entity.CustCart">
+		SELECT 
+			id,
+			uid,
+			uuid
+		FROM
+			custcart
+		WHERE 
+			ordernum = #{ordernum}
+	</select>
+	
+	
+	<!-- /**
+	 * 查找私人订制图片尺寸路径
+	 * @param Integer shapeId  图形id
+	 * @return 查询到的图形的路径
+	 */
+	String findsizepic(Integer shapeId); -->
+	
+	<select id="findsizepic" resultType="java.lang.String">
+		SELECT 
+			url
+		FROM
+			sizeurl
+		WHERE 
+			shapeId = #{shapeId}
+	</select>
+	
+	
+	<!-- 	/**
+	 * 根据图形ID图形是否是标准图形
+	 * @param shapeId 图形的id
+	 * @return 返回0则代表是标准图形，它有标准的宽高，返回1则表示是可调的图形
+	 */
+	Integer findAdjustable(Integer shapeId); -->
+	
+	<select id="findAdjustable" resultType="com.ideasStudio.website.entity.ShapeUrl">
+		SELECT
+			adjustable,
+			price,
+			unit
+		FROM
+			shapeurl
+		WHERE
+			shapeId = #{shapeId}			
+	</select>
+	
+	<!-- /**
+	 * 查找标准尺寸
+	 * @param shapeId 查找图形ID
+	 * @return 返回查找到的图形的尺寸
+	 */
+	List<Integer> findStandardSize(@Param("shapeId")Integer shapeId); -->
+	
+	<select id="findStandardSize" resultType="com.ideasStudio.website.entity.ShapeSizeStandard">
+		SELECT 
+			id,
+			shapeId,
+			defaultWidth,
+			defaultHeight,
+			perimeter
+		FROM
+			shapesize_standard
+		WHERE
+			shapeId = #{shapeId}
+	</select>
+	
+	<!-- /**
+	 * 查找非标准尺寸
+	 * @param shapeId  查找图形的id
+	 * @return 返回超找到的图形的尺寸
+	 */
+	ShapeSizeNonStandard findNonStandardSize(Integer shapeId); -->
+	
+	<select id="findNonStandardSize" resultType="java.lang.Integer">
+		SELECT 
+			${field}
+		FROM
+			shapesize_nonstandard
+		WHERE
+			shapeId = #{shapeId}
+		AND
+			${field} is not null
+		ORDER BY ${field}
+	</select>
+	
+	<!--
+	/**
+	 * 根据关键字查询边框
+	 * @param keyword
+	 * @return
+	 */
+	List<Border> findBorderByKeyWord(String keyword);
+	-->
+	
+	<select id="findBorderByKeyWord" resultType="com.ideasStudio.website.entity.Border">
+		SELECT 
+			borderId,
+			keyword,
+			name,
+			path,
+			price
+		FROM
+			border
+		WHERE
+			Appmaterials like concat(concat('%',#{material}),'%')
+		AND
+			keyword like concat(concat('%',#{keyword}),'%')
+
+	</select>
+	<!--
+	/**
+	 * 查询所有的边框
+	 * @return
+	 */
+	List<Border> findBorderAll();  -->
+	
+	<select id="findBorderAll" resultType="com.ideasStudio.website.entity.Border">
+		SELECT 
+			borderId,
+			keyword,
+			name,
+			path,
+			price
+		FROM
+			border
+		WHERE
+			Appmaterials like concat(concat('%',#{material}),'%')
+	</select>
+	
+	<!-- /**
+	 * 根据borderId查询border
+	 * @param borderId	border的Id
+	 * @return 返回查询到的border
+	 */
+	Border findBorderById(Integer borderId); -->
+	
+	<select id="findBorderById" resultType="com.ideasStudio.website.entity.Border">
+		SELECT 
+			borderId,
+			name,
+			keyword,
+			path,
+			price,
+			Appmaterials
+		FROM
+			border
+		WHERE
+			borderId = #{borderId}
+	</select>
+	
+	<!-- /**
+	 * 查询订单的状态
+	 * @param recordId
+	 * @return
+	 */
+	Integer selectOrderStatus(Integer recordId); -->
+	<select id="selectOrderStatus" resultType="java.lang.Integer">
+		SELECT 
+			status
+		FROM
+			custcart
+		WHERE
+			id = #{recordId}
+	</select>
+	
+	
+	<!-- /**
+	 * 查找单独的标注的尺寸信息
+	 * @param shapeId 图形的Id
+	 * @return 返回查询到的尺寸信息
+	 */
+	Border findShapeSizeStandardById(Integer shapeId); -->
+	
+	<select id="findShapeSizeStandardById" resultType="com.ideasStudio.website.entity.ShapeSizeStandard">
+		SELECT 
+			id,
+			shapeId,
+			defaultWidth,
+			defaultHeight,
+			perimeter
+		FROM
+			shapesize_standard
+		WHERE
+			shapeId = #{shapeId}
+	</select>
+	
+	
+	<!-- /**
+	 * 更新数据库的操作
+	 * @param cart	更新的数据
+	 * @return	返回操作的结果
+	 */
+	Integer UpdataInfo(CustCart cart); -->
+	
+	<update id="UpdataInfo" parameterType="com.ideasStudio.website.entity.CustCart">
+		UPDATE
+			custcart c
+		SET
+				c.uid = #{uid},
+				c.custornum  = #{custornum},
+				c.price = #{price},
+				c.painting_price = #{paintingPrice},
+				c.total = #{total},
+				c.width = #{width},
+				c.height = #{height},
+		         <choose>
+		             <when test="borderId != null">
+		                 c.borderId = #{borderId,jdbcType=INTEGER},
+		             </when>
+		             <otherwise>
+		                 c.borderId = 0,
+		             </otherwise>
+		         </choose>
+		        c.borderprice = #{borderprice},
+		        c.createuid = #{createuid},
+		        c.createuuid = #{createuuid}
+	    WHERE
+	    	c.id = #{id}
+        
+	</update>
+	
+	
+	<!-- /**
+	 * 更新这条记录的状态
+	 * @param status
+	 */
+	void UpdateStatus(@Param("status")Integer status,@Param("recordId")Integer recordId); -->
+	
+	<update id="UpdateStatus" parameterType="java.lang.Integer">
+		UPDATE 
+			custcart c
+		SET
+			c.status = #{status}
+		WHERE
+			c.id = #{recordId}
+			
+	</update>
+	
+	
+	<!-- /**
+	 * 根据用户id查询购物车列表
+	 * @param uid
+	 * @return
+	 */
+	List<CartVo> getCartList(String uid); -->
+	<select id="getCartList" resultType="com.ideasStudio.website.vo.CartVo">
+		SELECT c.id as cartId,
+			   c.uid as uid,
+			   c.shapeId as goodsId,
+			   c.custornum as goodsNum,
+			   c.total as money,
+			   c.ordernum as orderNo,
+			   s.shapeTitle as goodsTitle,
+			   s.shapeNo as goodsNo,
+			   c.path as goodsPath,
+			   c.height as goodsLength,
+			   c.width as goodsWidth,
+			   c.price as goodsPrice
+		FROM 
+		 	shape as s 
+		JOIN 
+		 	custcart as c 
+		 	on c.shapeid=s.shapeId 
+		 WHERE
+		 	 c.uid=#{uid}
+		 AND 
+		 	 c.status = 1
+	</select>
+	
+	
+	<!--/**
+	 * 根据uid查询购物车总金额,返回购物车总金额
+	 * @param uid
+	 * @return
+	 */
+	String getCartMoney(String uid);  -->
+	<select id="getCartMoney" resultType="java.lang.Double">
+		select sum(total) from custcart where uid=#{uid}
+	</select>
+	
+	
+	<!-- /**
+	 * 根据记录ID查询用户该记录商品所对应的单价
+	 * @param recirdId
+	 * @return
+	 */
+	Double getCartPriceByRecordId(Integer recordId); -->
+	<select id="getCartPriceByRecordId" resultType="com.ideasStudio.website.entity.CustCart">
+		SELECT
+			uid,
+			uuid,
+			custornum,
+			price,
+			painting_price as paintingPrice,
+			total,
+			borderId,
+			borderprice
+		FROM
+			custcart
+		WHERE
+			id = #{recordId}
+		AND
+			status = 1
+	</select>
+	
+	<!-- /**
+	 * 根据记录Id修改购物车中购买数量
+	 * @param cart 修改的值
+	 * @return 返回修改记录受影响的行数
+	 */
+	Integer UpdateCartOrNumByRecordId(CustCart cart);	 -->
+	<update id="UpdateCartOrNumByRecordId" parameterType="com.ideasStudio.website.entity.CustCart">
+		UPDATE 
+			custcart c
+		SET
+			c.custornum = #{custornum},
+			c.total = #{total}
+		WHERE
+			c.id = #{id}
+		AND
+			status = 1
+	</update>
+	
+	<!-- /**
+	 * 根据记录Id删除购物车中加入的商品
+	 * @param recordId 记录ID
+	 * @return 返回修改记录受影响的行数
+	 */
+	Integer DeleteCustRecordById(Integer recordId); -->
+	
+	<delete id="DeleteCustRecordById" parameterType="java.lang.Integer">
+		DELETE FROM
+			custcart
+		WHERE
+			id = #{recordId}
+	</delete>
+	
+	<!-- /**
+	 * 查询用户的购物车数量
+	 * @param uid
+	 * @return
+	 */
+	Integer getCartCount(String uid); -->
+	
+	<select id="getCartCount" resultType="java.lang.Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			custcart
+		WHERE 
+			uid = #{uid}
+		AND
+			status = 1
+	</select>
+	
+	
+	<!-- /**
+	 * 往私人订制购物车中插入一条记录
+	 * @param cart  插入的记录
+	 * @return 返回插入的id  然后绑定到页面上，下次用户提交补全信息
+	 */
+	CustCart addCustCart(CustCart cart); -->
+	<insert id="addCustCart" parameterType="com.ideasStudio.website.entity.CustCart">
+	  <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+          SELECT LAST_INSERT_ID()
+      </selectKey>
+		INSERT INTO custcart(
+			uid,
+			uuid,
+			material,
+			shapeid,
+			custornum,
+			ordernum,
+			path,
+			width,
+			height,
+			price,
+			painting_price,
+			total,
+			borderId,
+			borderprice,
+			createtime,
+			createuid,
+			createuuid
+			)VALUES
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+	            <choose>
+	                <when test="uid != null">
+	                    #{uid,jdbcType=VARCHAR},
+	                </when>
+	                <otherwise>
+	                    '',
+	                </otherwise>
+	            </choose>
+	            <choose>
+	                <when test="uuid != null">
+	                    #{uuid,jdbcType=VARCHAR},
+	                </when>
+	                <otherwise>
+	                    '',
+	                </otherwise>
+	            </choose>
+	            #{material},
+				#{shapeid},
+				#{custornum},
+				#{ordernum},
+				#{path},
+				#{width},
+				#{height},
+				#{price},
+				#{paintingPrice},
+				#{total},
+				#{borderId},
+				#{borderprice},
+				#{createtime},
+				#{createuid},
+				#{createuuid}
+       		</trim>
+	</insert>
+	<!--清空购物车  -->
+	<delete id="deleteAllCart">
+		delete from custcart where uid=#{uid}
+	</delete>
+</mapper>

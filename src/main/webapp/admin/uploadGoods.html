@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>Bootstrap 实例 - 基本表单</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="./js/jquery-3.3.1.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		.form-control{
+			width: 400px;
+		}
+		#goods{
+			margin-left: 450px;
+		}
+		.need{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+<form role="form" id="goods" enctype="multipart/form-data" method="post" action="../goods/uploadGoods.do">
+	<h2>上传商品信息，*号必填,图片选择png格式</h2>
+	<div class="form-group">
+		<label for="title">商品标题</label><span class="need">*</span>
+		<input type="text" class="form-control" name="title"  id="title" placeholder="请输入标题">
+	</div>
+	<div class="form-group">
+    <label for="material">请选择材质</label><span class="need">*</span>
+    <select class="form-control" name="material">
+      <option value="1">亚克力</option>
+      <option value="2">中纤板</option>
+      <option value="3">油画纸</option>
+    </select>
+    </div>
+    <div class="form-group">
+    <label for="material">请选择风格</label><span class="need">*</span>
+    <select class="form-control" name="bigtype">
+      <option value="1">风景</option>
+      <option value="2">抽象</option>
+      <option value="3">建筑</option>
+      <option value="4">植物</option>
+    </select>
+    </div>
+    <div class="form-group">
+    <label for="material">请选择类型</label><span class="need">*</span>
+    <select class="form-control" name="smalltype">
+      <option value="1">单幅画</option>
+      <option value="2">套幅画</option>
+      <option value="3">组合画</option>
+      
+    </select>
+    </div>
+    <div class="form-group">
+		<label for="number">商品编号</label><span class="need">*</span>
+		<input type="text" class="form-control" name="number" id="number" placeholder="请输入编号">
+	</div>
+	<div class="form-group">
+    <label for="introduce">商品介绍</label>
+    <textarea class="form-control" rows="3" name="introduce"></textarea>
+  	</div>
+  	 <div class="form-group">
+  	 <div>尺寸1</div><span class="need">*</span>
+		长:<input type="text" class="form-control-n"  id="length" name="length" style="display: inline;width: 80px">cm&nbsp;&nbsp;
+		宽:<input type="text" class="form-control-n" id="width" name="width"  style="display: inline;width: 80px">cm&nbsp;&nbsp;
+		价格:<input type="text" class="form-control-n" id="price" name="price" style="display: inline;width: 80px">
+	<div>尺寸2</div><span>&nbsp;</span>
+		长:<input type="text" class="form-control-n" name="length"  style="display: inline;width: 80px">cm&nbsp;&nbsp;
+		宽:<input type="text" class="form-control-n" name="width"  style="display: inline;width: 80px">cm&nbsp;&nbsp;
+		价格:<input type="text" class="form-control-n" name="price"  style="display: inline;width: 80px">
+	 <div>尺寸3</div><span>&nbsp;</span>
+		长:<input type="text" class="form-control-n" name="length"  style="display: inline;width: 80px">cm&nbsp;&nbsp;
+		宽:<input type="text" class="form-control-n" name="width"  style="display: inline;width: 80px">cm&nbsp;&nbsp;
+		价格:<input type="text" class="form-control-n" name="price"  style="display: inline;width: 80px">
+	<div>尺寸4</div><span>&nbsp;</span>
+		长:<input type="text" class="form-control-n" name="length"  style="display: inline;width: 80px">cm&nbsp;&nbsp;
+		宽:<input type="text" class="form-control-n" name="width"  style="display: inline;width: 80px">cm&nbsp;&nbsp;
+		价格:<input type="text" class="form-control-n" name="price"  style="display: inline;width: 80px">
+	</div>
+  	
+	<div class="form-group">
+		<label for="inputfile">产品图片</label><span class="need">*</span>
+		<input type="file"  name="file">
+	</div>
+	<div class="form-group">
+		<label for="inputfile">产品效果图</label><span class="need">*</span>
+		<input type="file"  name="file">
+	</div>
+	<!-- <div class="form-group">
+		<label for="inputfile">详情页图片1</label><span class="need">*</span>
+		<input type="file"  name="file">
+	</div>
+	<div class="form-group">
+		<label for="inputfile">详情页图片2</label><span class="need">*</span>
+		<input type="file"  name="file">
+	</div> -->
+	<!-- <div class="form-group">
+		<label for="inputfile">详情页图片3</label><span class="need">*</span>
+		<input type="file"  name="file">
+	</div>
+	<div class="form-group">
+		<label for="inputfile">详情页图片4</label><span class="need">*</span>
+		<input type="file"  name="file">
+	</div> -->
+	<input type="submit" value="提交" onclick="return check()">
+</form>
+	<script type="text/javascript">
+		var sizeOn=false;//尺寸填写错误
+		var fileOn=false;//文件没选择
+		var nullOn=false;//*号内容没写
+		$("#title,#number").blur(function(){
+			var input=event.target||event.srcElement;
+			if($(input).val()==""){
+				$(input).css("border","1px solid red");
+				nullOn=false;
+			}else{
+				nullOn=true;
+			}
+		});
+		$(".form-control-n").blur(function(){
+			var input=event.target||event.srcElement;
+			if(isNaN($(input).val())){//非数字
+				sizeOn=false;
+				$(input).css("border","1px solid red");
+			}else{
+				sizeOn=true;
+			}
+		});
+		$(".form-control-n,#title,#number").focus(function(){
+			var input=event.target||event.srcElement;
+			$(input).css("border","1px solid #C0C0C0");
+		});
+		function check(){
+			$("input[name='file']").each(function(){ 
+				if($(this).val()=="") { 
+					alert("还有文件没上传")
+					fileOn=false;
+					return false; 
+				}else if(!/\.(png)$/.test($(this).val())){
+					alert("请选择png格式的图片")
+					fileOn=false;
+					return false; 
+				}else{
+					fileOn=true;
+				}
+			});
+			//alert("size+"+sizeOn+",fileon+"+fileOn+",nullon"+nullOn);
+			if(sizeOn+fileOn+nullOn!=3){
+				alert("请完善信息");
+				return false;
+			}
+			return true;
+		}
+	</script>
+</body>
+</html>

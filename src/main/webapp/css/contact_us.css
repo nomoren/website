@@ -1,0 +1,329 @@
+
+.tm-contact-block {
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(35, 53, 53, 0.5);
+    padding: 40px 50px;
+}
+
+.tm-contact-icon {
+    display: inline-block;
+    height: 93px;
+    width: 93px;
+    line-height: 93px;
+    font-size: 40px;
+    text-align: center;
+    border-radius: 999px;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(35, 53, 53, 0.96);
+    margin-bottom: 25px;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+fieldset {
+    display: block;
+    -webkit-margin-start: 2px;
+    -webkit-margin-end: 2px;
+    -webkit-padding-before: 0.35em;
+    -webkit-padding-start: 0.75em;
+    -webkit-padding-end: 0.75em;
+    -webkit-padding-after: 0.625em;
+    min-width: -webkit-min-content;
+    border-image: initial;
+    border-radius: 3px;
+    border:#888 solid 1px;
+}
+
+legend {
+
+    display: block;
+    -webkit-padding-start: 4px;
+    -webkit-padding-end: 4px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    margin: 0;
+}
+
+
+
+.fromcss input[type="text"] {
+    padding: 0px;
+    /* border: 1px;*/
+    color: #000;
+    height: inherit;
+}
+.fromcss select{
+    width: 307px;
+    height: 30px;
+    border: 0px;
+    color: #666;
+}
+
+fieldset input{
+    display: block;
+    border: 0px;
+}
+
+.fromcss select option{
+    color: #666;
+}
+.fromcss textarea{
+    border: 0px;
+}
+.fromcss input[type="button"]{
+    width: 30%;
+    height: 32px;
+    color: #000;
+    float: inherit;
+    font-size: 17px;
+}
+.fromcss legend{
+    font-size: 15px;
+    color: #666;
+}
+.se2 h5{
+    color: #666;
+}
+.se2{
+    margin-bottom: 10px;
+}
+.se2-from{
+    margin-top: 30px;
+}
+
+input::-webkit-input-placeholder{
+    color:red;
+    font-size: 7px;
+}
+input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color:red;
+    font-size: 7px;
+}
+input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color:red;
+    font-size: 7px;
+}
+input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+    color:red;.
+font-size: 7px;
+}
+
+textarea::-webkit-input-placeholder{
+    color:red;
+    font-size: 7px;
+}
+textarea::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color:red;
+    font-size: 7px;
+}
+textarea:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color:red;
+    font-size: 7px;
+}
+textarea:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+    color:red;
+    font-size: 7px;
+}
+
+.input{
+    margin: 0 auto;
+}
+
+.fade-set{
+    margin-top: 30px;
+    width: 270%;
+    position: relative;
+    margin-left: 3em;
+}
+
+.frombtn{
+  /*  width: 80px;
+    height:30px;*/
+  //  background-color: #fff;
+    border-radius: 0px;
+    border:1px solid #888;
+    font-weight: bold;
+    margin-top: 1rem;
+  /*  background-image: url("../images/contact_us/submit.jpg");*/
+    border-radius: 2px;
+}
+.frombtn:hover{
+    background-color: #ECEDEF;
+}
+.userinfor{
+    padding: 4rem;
+    border-radius: 2px;
+}
+.userinfor>div>span{
+    display: block;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.form-label{
+ display: block;
+}
+.bg{
+    border: 0px;
+}
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+@media only screen and (max-width: 800px) and (min-width:0px){
+    .bg{
+       display: none;
+    }
+    .userinfor{
+        box-shadow: 0 0 0px rgba(0, 0, 0, 0.96);
+    }
+
+}
+
+@media only screen and (min-width:801px){
+    .bg{
+        display: block;
+    }
+    .userinfor{
+        box-shadow: 0 0 20px rgba(35, 53, 53, 0.96);
+    }
+
+}
+
+@media only screen and (max-width: 899px) and (min-width: 801px){
+    .userinfor{
+        width: 27em;
+        height:39em;
+        position: absolute;
+        z-index: 100;
+        top: 19.5em;
+        right:5rem;
+        align:center;
+    }
+    .bg{
+        margin-bottom: 15rem;
+    }
+    .userinfor{
+        padding: 1rem;
+        border-radius: 2px;
+    }
+    fieldset {
+        -webkit-padding-before: 0.1em;
+        -webkit-padding-start: 0.25em;
+        -webkit-padding-end: 0.25em;
+        -webkit-padding-after: 0.25em;
+    }
+
+    fieldset {
+        padding: .15em .25em .25em;
+        margin: 0 2px;
+    }
+}
+
+@media only screen and (max-width: 1080px) and (min-width:900px){
+    .userinfor{
+        width: 27em;
+        height:39em;
+        position: absolute;
+        z-index: 100;
+        top: 23em;
+        right:5rem;
+        align:center;
+        margin-right: 2rem;
+    }
+    .userinfor{
+        padding: 2rem;
+        border-radius: 2px;
+    }
+    .bg{
+        margin-bottom: 15rem;
+    }
+    fieldset {
+        -webkit-padding-before: 0.25em;
+        -webkit-padding-start: 0.55em;
+        -webkit-padding-end: 0.55em;
+        -webkit-padding-after: 0.55em;
+    }
+
+    fieldset {
+        padding: .36em .55em .55em;
+        margin: 0 2px;
+    }
+}
+
+@media only screen and (max-width: 1439px) and (min-width: 1081px){
+    .userinfor{
+        width: 30em;
+        height:39em;
+        position: absolute;
+        z-index: 100;
+        top: 35rem;
+        right:5rem;
+        align:center;
+        margin-right: 2rem;
+    }
+    .bg{
+        margin-bottom: 5rem;
+    }
+}
+
+@media only screen and (max-width: 1539px) and (min-width: 1440px){
+    .userinfor{
+        width: 40em;
+        height:40em;
+        position: absolute;
+        z-index: 100;
+        top: 35em;
+        right:8rem;
+        align:center;
+        margin-right: 2rem;
+    }
+}
+
+@media only screen and (max-width: 1920px) and (min-width: 1540px){
+    .userinfor{
+        width: 40em;
+        height:40em;
+        position: absolute;
+        z-index: 100;
+        top: 50em;
+        right:100px;
+        align:center;
+        margin-right: 2rem;
+    }
+}
+
+@media only screen and (max-width: 2048px) and (min-width: 1921px){
+    .userinfor{
+        width: 40em;
+        height:40em;
+        position: absolute;
+        z-index: 100;
+        top: 53em;
+        right:150px;
+        align:center;
+        margin-right: 2rem;
+    }
+}
+@media only screen and (max-width: 2560px) and (min-width:2049px){
+    .userinfor{
+        width: 50em;
+        height:50em;
+        position: absolute;
+        z-index: 100;
+        top: 50em;
+        right:25rem;
+        align:center;
+        margin-right: 2rem;
+    }
+}
+
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+

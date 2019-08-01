@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.ideasStudio.website.mapper.GoodsInfoMapper">
+	<!--根据类型查询商品  -->
+	<select id="showGoods" resultType="com.ideasStudio.website.vo.GoodsVo">
+		select m.material,
+			   g.id,
+			   g.title,
+			   g.number,
+			   g.path,
+			   min(c.price) as price
+		 from
+		      material as m
+		 inner join
+		      goodsinfo as g
+		 on m.id=g.materialid
+		 inner join
+		      goodssize as c
+		 on g.id=c.goodsid
+		 inner join
+		      bigtype as b
+		 on g.bigtypeid=b.id
+		  inner join
+		      smalltype as s
+		 on g.smalltypeid=s.id
+		where m.material=#{material}   
+		and b.id=#{bigtype} 
+		<if test="smalltype!=0">
+		and s.id=#{smalltype}
+		</if> 
+		and g.status=1 group by g.id ;
+	</select>
+	<!--查询所有商品  -->
+	<select id="getAllGoods" resultType="com.ideasStudio.website.vo.GoodsVo">
+		select m.material,
+			   g.id,
+			   g.title,
+			   g.number,
+			   g.path,
+			   g.status,
+			   min(c.price) as price
+		 from
+		      material as m
+		 inner join
+		      goodsinfo as g
+		 on m.id=g.materialid
+		 inner join
+		      goodssize as c
+		 on g.id=c.goodsid
+		 group by g.id limit #{jump},#{num};
+	</select>
+	<resultMap type="com.ideasStudio.website.vo.GoodsVo" id="goodsMap">
+		<id column="id" property="id"/>
+		<result column="material" property="material"/>
+		<result column="title" property="title"/>
+		<result column="price" property="price"/>
+		<result column="number" property="number"/>
+		<result column="path" property="path"/>
+		<collection property="sizeList" ofType="com.ideasStudio.website.entity.GoodsSize">
+			<id column="cid" property="id"/>
+			<result column="length" property="length"/>
+			<result column="width" property="width"/>
+			<result column="price" property="price"/>
+		</collection>
+	</resultMap>
+	<!--根据id查询商品 详情 -->
+	<select id="getGoods" resultMap="goodsMap">
+		select m.material,
+			   g.id,
+		       g.title,
+		       g.number,
+		       g.path,
+		       c.id as cid,
+		       c.length,
+		       c.width,
+		       c.price
+		 from
+		      material as m
+		 inner join
+		      goodsinfo as g
+		 on m.id=g.materialid
+		 inner join
+		      goodssize as c
+		 on g.id=c.goodsid
+		where g.id=#{id}
+	</select>
+	
+	<!--查询商品价格（最小）  -->
+	<select id="getGooodsPrice" resultType="double">
+		select price from goodsinfo where  id=#{id}
+	</select>
+	
+	<!--根据id查询对应GoodsSize  -->
+	<select id="getGoodsSizeMoney" resultType="com.ideasStudio.website.entity.GoodsSize">
+		select length,width,price from goodssize where id=#{sizeId}
+	</select>
+	<!-- 随机从商品表取若干数据 -->
+	<select id="getListByRand" resultType="com.ideasStudio.website.vo.GoodsVo">
+		select m.material,
+			   g.id,g.title, 
+			   g.number, 
+			   g.path,
+			   min(c.price) as price
+		from 
+			   material as m 
+		inner join 
+			   goodsinfo as g on m.id=g.materialid
+		inner join
+			   goodssize as c on g.id=c.goodsid
+		group by g.id ORDER BY  RAND() LIMIT #{num};
+
+	</select>
+	
+	<!--新增商品  -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.ideasStudio.website.entity.GoodsEntity">
+		insert into goodsinfo(materialid,title,path,introduce,number,status,bigtypeid,smalltypeid) 
+		values(
+		#{material},
+		#{title},
+		#{path},
+		#{introduce},
+		#{number},
+		#{status},
+		#{bigtype},
+		#{smalltype}
+		)
+	</insert>
+	<!--加入尺寸  -->
+	<insert id="insertSize" useGeneratedKeys="true" keyProperty="id" parameterType="com.ideasStudio.website.entity.GoodsSize">
+		insert into goodssize(goodsid,length,width,price)
+		values(#{goodsId},#{length},#{width},#{price})
+	</insert>
+	<!--删除无用的信息  -->
+	<delete id="deleteNull">
+		delete from goodssize where length is null and width is null
+	</delete>
+	<!--获取商品总数  -->
+	<select id="getGoodsCount" resultType="int">
+		select count(id) from goodsinfo
+	</select>
+	<!--改变商品上架或者下架  -->
+	<update id="changGoodsStatus">
+		update goodsinfo set status=#{status} where id=#{id}
+	</update>
+	<!--删除商品  -->
+	<delete id="deleteGoods">
+		delete from goodsinfo where id=#{goodsId}
+	</delete>
+	<!--删除商品的尺寸和价格  -->
+	<delete id="deleteGoodsSize">
+		delete from goodssize where goodsid=#{goodsId}
+	</delete>
+	<resultMap type="com.ideasStudio.website.vo.GoodsVo" id="typeMap">
+		<id column="id" property="id"/>
+		<result column="bigtypeid" property="bigtype"/>
+		<result column="smalltypeid" property="smalltype"/>
+		<result column="material" property="material"/>
+	</resultMap>
+	<!--根据id查询type和Material  -->
+	<select id="getTypeAndMaterialById" resultMap="typeMap">
+		select m.material,
+			   g.id,
+			   g.bigtypeid,
+			   g.smalltypeid
+		 from
+		      material as m
+		 inner join
+		      goodsinfo as g
+		 on m.id=g.materialid
+		 inner join
+		      bigtype as b
+		 on g.bigtypeid=b.id
+		  inner join
+		      smalltype as s
+		 on g.smalltypeid=s.id
+		where g.id=#{goodsId};
+	</select>
+</mapper>
