@@ -21,7 +21,7 @@ import com.ideasStudio.website.vo.EmpCodeVo;
 /**
  * 优惠券
  * @author Administrator
- * git
+ * git git2
  */
 @Controller
 @RequestMapping("/admin")
