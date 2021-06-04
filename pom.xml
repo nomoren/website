@@ -106,7 +106,7 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.5.1</version>
+			<version>4.5.13</version>
 		</dependency>
 		<!-- apache StringUtil工具类 字符串处理类 ZIP压缩要用到 -->
 		<dependency>
